@@ -1,0 +1,24 @@
+---
+import FormGroup from "../ui/FormGroup.astro";
+import Button from "../ui/Button.astro";
+---
+
+<div class="signUp Form pt-14">
+  <form action="">
+    <h1 class="text-center fs-r-30 fw-800 mb-6 line-relaxed">أنشئ حسابك</h1>
+    <FormGroup type="text" name="userName" title="الاسم بالكامل" />
+    <FormGroup type="email" name="userEmail" title="البريد الالكتروني" />
+    <FormGroup type="number" name="userPhone" title="رقم الهاتف" />
+    <FormGroup type="password" name="userPassword" title="كلمة المرور" />
+    <Button
+      type="submit"
+      aria="sign in"
+      ClassName="mt-5 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto"
+    >
+      التسجيل
+    </Button>
+    <p class="text-center mt-6 fs-14 changeResponsive">
+      هل لديك حساب؟ <span class="fw-800 signUpBtn">تسجيل الدخول</span>
+    </p>
+  </form>
+</div>

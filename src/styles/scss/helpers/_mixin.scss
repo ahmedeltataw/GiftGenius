@@ -1,0 +1,31 @@
+
+@mixin overlay($height, $width, $color, $dir, $dir-value) {
+    &::after {
+        content: '';
+        position: absolute;
+        #{$dir}: $dir-value;
+        width: $width;
+        height: $height;
+        background: $color;
+        
+    }
+}
+@mixin input($h ,$w,$bc){
+    height: $h;
+    width: $w;
+    outline: 0;
+    border: 1px solid $bc;
+}
+
+@mixin centerPosition() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin cricle($size ) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}

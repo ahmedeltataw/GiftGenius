@@ -1,0 +1,85 @@
+@use './color' as*;
+@use './mixin' as *;
+
+%responsive-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+%grid-center {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+%centerPosition {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%grid-system {
+    grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+    justify-content: center;
+    gap: 20px 10px;
+}
+
+%visible {
+    opacity: 1;
+    transform: translateY(0);
+    transform: translateX(0);
+}
+
+%AE_Scrolling {
+    opacity: 0;
+}
+
+%label-focus {
+    top: -10px;
+    background-color: #fff;
+    transform: scale(.9);
+    color: $hover-1;
+}
+
+%btn-skew-border {
+    &.btn-skew {
+        background-color: transparent;
+        border: 1px solid $hover-1;
+        color: $hover-1;
+
+        a {
+            color: $hover-1;
+            transition: $t-s;
+        }
+
+        &:hover {
+            a {
+                color: #ffffff;
+            }
+
+            color: #ffffff;
+        }
+
+
+    }
+}
+
+// 
+%inputAuth {
+    @include input(40px, 100%, #9f9f9f61);
+
+}
+
+%Hide{
+    opacity: 0;
+            transform: translateY(-100%);
+            filter: blur(2px);
+}
+%Show{
+    transform: translateY(0);
+            filter: blur(0);
+            opacity: 1;
+}

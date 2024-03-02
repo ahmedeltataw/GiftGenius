@@ -1,0 +1,14 @@
+---
+interface Props {
+  type: "text" | "number" | "password" | "email";
+  title: string;
+  name: string;
+}
+const { title, name, type } = Astro.props;
+---
+
+<div class="formGroup relative mb-7">
+  <input type={type} name={name} id={name} class="round-4 pr-5" required />
+  <label for={name} class="absolute top-50 right-5">{title}</label>
+  <p class="error"></p>
+</div>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  des: string;
+  BtnName: string;
+  ClassNames: string;
+  id: string;
+}
+const { title, des, BtnName, ClassNames, id } = Astro.props;
+//
+import Button from "../ui/Button.astro";
+---
+
+<div class={`togglePanel ${ClassNames} `}>
+  <h1 class="fs-r-36 fw-800 line-relaxed">
+    {title}
+  </h1>
+  <p class="fw-500 line-relaxed py-6 px-14">{des}</p>
+  <Button
+    type="button"
+    ClassName="mt-5 btn-popup px-10 py-5 round-6 fs-18 "
+    aria={BtnName}
+    id={id}
+  >
+    {BtnName}
+  </Button>
+</div>

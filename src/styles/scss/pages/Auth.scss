@@ -1,0 +1,206 @@
+@use "../helpers/color" as *;
+@use "../helpers/extend" as *;
+
+
+
+//main style
+.AuthMain {
+    flex-direction: column;
+    height: 100vh;
+
+    .imgContainer {
+        width: 100%;
+        height: 100%;
+        opacity: .04;
+        filter: blur(2px);
+    }
+
+    //section style
+    .slideAuth {
+        background-color: #fff;
+        width: 850px;
+        max-width: 100%;
+        min-height: 478px;
+        border-radius: 30px;
+        box-shadow: -20px 20px 2rem #0c010424;
+
+        #container {
+            height: 100%;
+
+            &.active {
+                .signIn {
+                    @extend %Show;
+                }
+
+                .signUp {
+                    @extend %Hide;
+                }
+            }
+        }
+
+        .toggle {
+            height: 100%;
+            width: 50%;
+            transition: $t-l;
+
+
+            &.active {
+                transform: translateX(-100%);
+            }
+
+            .togglePanel {
+                width: 100%;
+                height: 100%;
+                background-color: $hover;
+                transition: $t-l;
+
+                color: #fff;
+                flex-shrink: 0;
+
+                p {
+
+                    opacity: .9;
+                }
+            }
+
+            .toggleLeft {
+                box-shadow: -20px 20px 2rem #7f777975;
+                opacity: 1;
+
+
+                border-radius: 100% 0% 0% 100% / 0% 0% 100% 100%;
+                border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+
+            }
+
+            .toggleRight {
+                box-shadow: 20px 20px 2rem #7f777975;
+
+                border-radius: 0% 100% 100% 0% / 100% 0% 100% 0%;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+                opacity: 0;
+            }
+
+
+        }
+
+        .signIn {
+            @extend %Hide;
+
+            margin-left: 8vh;
+        }
+
+        .signUp {
+
+            @extend %Show;
+
+
+        }
+
+        .Form {
+            transition: 700ms ease-in-out;
+            margin: 0 5vh;
+            width: 50%;
+            height: 100%;
+
+            button {
+                color: $hover-1;
+                transition: $t-l;
+
+                &:hover {
+                    color: #fff;
+                }
+
+            }
+
+            input {
+                @extend %inputAuth;
+
+                &:focus {
+                    border-color: $hover;
+                }
+
+
+
+                &:focus+label,
+                &:valid+label {
+                    color: $hover;
+                    transform: scale(.9) translateY(-35px);
+                    background-color: #fff;
+                    opacity: 1;
+                }
+            }
+
+            label {
+                transform: translateY(-50%);
+                transition: $t-s;
+                pointer-events: none;
+                opacity: .8;
+            }
+
+            .changeResponsive {
+                display: none;
+            }
+        }
+
+        .togglePanel,
+        .Form {
+            padding-top: 10vh;
+
+
+        }
+
+        @media(max-width: 580px) {
+
+            .toggle {
+                display: none;
+
+            }
+
+            .signIn {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(-100%);
+                filter: blur(2px);
+
+                &.active {
+                    transform: translateY(0);
+                    filter: blur(0);
+                    opacity: 1;
+
+                }
+            }
+
+            .signUp {
+                width: 100%;
+
+                &.active {
+                    opacity: 0;
+                    transform: translateY(-100%);
+                    filter: blur(2px);
+                }
+
+
+            }
+
+            .Form {
+                .changeResponsive {
+                    display: block;
+
+                    span {
+                        transition: $t-s;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $hover;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}

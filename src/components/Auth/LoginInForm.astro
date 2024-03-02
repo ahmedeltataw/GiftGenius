@@ -1,0 +1,22 @@
+---
+import FormGroup from "../ui/FormGroup.astro";
+import Button from "../ui/Button.astro";
+---
+
+<div class="signIn Form" style="display: none;">
+  <form action="">
+    <h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل الدخول</h1>
+    <FormGroup type="email" name="userEmailLogin" title="البريد الالكتروني" />
+    <FormGroup type="password" name="userPasswordLogin" title="كلمة المرور" />
+    <Button
+      type="submit"
+      aria="sign in"
+      ClassName="mt-8 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto"
+    >
+      تسجيل الدخول
+    </Button>
+    <p class="text-center mt-6 fs-14 changeResponsive">
+      ليس لديك حساب؟ <span class="fw-800 signInBtn"> أنشئ حسابك</span>
+    </p>
+  </form>
+</div>

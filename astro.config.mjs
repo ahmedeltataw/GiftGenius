@@ -9,7 +9,7 @@ export default defineConfig({
     assets: 'assets/images',
     inlineStylesheets: 'never',
     format: 'file',
-    assetsPrefix: '/dist',
+    assetsPrefix: './',
     
   },
   image: {

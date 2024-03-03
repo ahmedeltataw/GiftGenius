@@ -8,7 +8,10 @@ const { title } = Astro.props;
 import Font from "./Font.astro";
 //style
 import "../styles/plugins/AE.css";
-import "../styles/scss/global.scss";
+import "@styles/scss/global.scss";
+//components
+import Header from "../components/header/Header.astro";
+import Footer from "../components/footer/Footer.astro";
 ---
 
 <!doctype html>
@@ -23,6 +26,9 @@ import "../styles/scss/global.scss";
     <Font />
   </head>
   <body>
+    <Header />
     <slot />
+    <Footer />
+    <script src="../scripts/main.ts"></script>
   </body>
 </html>

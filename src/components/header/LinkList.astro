@@ -1,0 +1,17 @@
+---
+import { HeaderData } from "@data/data";
+import type { LinkType } from "../../types/types";
+---
+
+<ul class="d-flex items-center link-list normalMenu">
+  {
+    HeaderData.map((link: LinkType) => (
+      <li class="nav-link pr-12">
+        <a class="fw-700  relative" href={link.title}>
+          {" "}
+          {link.title}{" "}
+        </a>
+      </li>
+    ))
+  }
+</ul>

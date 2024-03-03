@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+// import img
+import Logo from "@assets/images/gifts-AELogo.png";
+//components
+import LinkList from "./LinkList.astro";
+import Button from "@components/ui/Button.astro";
+//style
+import "@styles/scss/components/header.scss";
+---
+
+<header class="absolute top-0">
+  <div class="container">
+    <nav class="d-flex items-center justify-between py-5">
+      <a href="/" class="logo">
+        <Image
+          src={Logo}
+          alt={`logo for Gift Genius `}
+          format="webp"
+          quality={70}
+          class={`img-cover`}
+        />
+      </a>
+      <Button type="button" ClassName="icon-nav-base" aria="open menu">
+        <span></span><span></span><span></span>
+      </Button>
+      <LinkList />
+    </nav>
+  </div>
+</header>
+<script>
+
+</script>

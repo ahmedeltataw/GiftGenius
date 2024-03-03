@@ -1,20 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import SlideAuth from "../components/Auth/SlideAuth.astro";
+import SlideAuth from "@components/Auth/SlideAuth.astro";
 //style
 import "../styles/scss/pages/Auth.scss";
-import bgImg from "../assets/image/gifts.png";
+import bgImg from "../assets/images/gifts.png";
 import { Image } from "astro:assets";
-
 ---
 
 <Layout title="Gift Genius ">
-  <main class="AuthMain d-flex items-start justify-center relative" >
-    <!-- <div class="imgContainer absolute">
-      <Image src={bgImg} alt={`bg`} class={`img-cover`}  />
-    </div> -->
+  <main class="relative Main">
+    <div class="imgContainer absolute">
+      <Image src={bgImg} alt={`bg`} class={`img-cover`} />
+    </div>
     <SlideAuth />
   </main>
-  <script src="../scripts/main.ts"></script>
+  <script src="../scripts/Auth.ts"></script>
 </Layout>

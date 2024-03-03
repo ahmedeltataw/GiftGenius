@@ -1,7 +1,8 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, squooshImageService } from 'astro/config';
 import compressor from "astro-compressor";
-
 import purgecss from "astro-purgecss";
+
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,14 +10,15 @@ export default defineConfig({
     assets: 'assets/images',
     inlineStylesheets: 'never',
     format: 'file',
-    assetsPrefix: './',
-    
+    base: '/',
+    // assetsPrefix: '/dist/'
   },
   image: {
+    service: squooshImageService(),
     domains: ["astro.build"]
   },
   compressHTML: true,
-  
+  optimizeHoistedScript: true,
   output: 'static',
   vite: {
     build: {
@@ -48,6 +50,6 @@ export default defineConfig({
   integrations: [compressor({
     gzip: true,
     brotli: false
-  }), purgecss()]
+  }), purgecss({safelist:['svg']}), icon()]
 });
 // safelist

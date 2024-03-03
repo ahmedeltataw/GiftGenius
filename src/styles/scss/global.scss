@@ -15,10 +15,14 @@ html {
     background-color: transparent;
     border: 1px solid $hover-2;
     color: #fff;
-    
+
     &::before {
         background-color: $hover-2;
         top: 50%;
         left: 50%;
     }
+}
+
+.icon-nav-base span {
+    background-color: $hover;
 }

@@ -1,0 +1,29 @@
+---
+import Button from "../ui/Button.astro";
+import FormGroup from "../ui/FormGroup.astro";
+import MainHeading from "../ui/mainHeading.astro";
+---
+
+<section class="contact">
+  <MainHeading title="تواصل معانا" />
+  <div class="container">
+    <form action="" class="round-6 mx-auto">
+      <FormGroup type="text" title="الاسم بالكامل" name="userName" />
+      <FormGroup type="email" title=" البريد الاكتروني" name="userEmail" />
+      <FormGroup type="number" title=" رقم الهاتف " name="userPhone" />
+      <div class="formGroup relative mb-7">
+        <textarea name="UserMassage" id="massage"></textarea>
+        <label for="massage" class="absolute top-50 right-5">رسالتك</label>
+      </div>
+      <div class="d-flex items-center justify-center mx-auto">
+        <Button
+          type={`submit`}
+          aria="contact us"
+          ClassName="btn-popup fs-18 fw-800 py-4 px-14 round-6"
+        >
+          ارسال
+        </Button>
+      </div>
+    </form>
+  </div>
+</section>

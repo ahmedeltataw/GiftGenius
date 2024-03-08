@@ -1,0 +1,35 @@
+---
+interface Props {
+  linkPage: string;
+  defPage?: string;
+  path?: string;
+  isCrumb?: boolean;
+}
+const { linkPage, defPage, path, isCrumb } = Astro.props;
+
+
+---
+
+<section class="breadcrumb d-flex items-center justify-center relative overflow-hidden">
+  <div class="img_Container absolute">
+    
+  </div>
+  <div class="container">
+    <h1 class="title capitalize pb-5 text-center fs-r-36 fw-700 line-normal">
+      {linkPage}  {isCrumb ? null : <span id="userName"></span> }
+    </h1>
+    {
+      !isCrumb && (
+        <ul class="d-flex items-center justify-center relative">
+          <li class="linkPage">{linkPage}</li>
+          <li class="separator" />
+          <li class="defPage ">
+            <a href={path} class="">
+              {defPage}
+            </a>
+          </li>
+        </ul>
+      )
+    }
+  </div>
+</section>

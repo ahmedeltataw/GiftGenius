@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<ul class="iconList d-flex items-center">
+  <li class="dropdown  nav-items pr-12 relative d-flex items-center" id="drop2">
+    
+    <span class="fw-700 nav-link relative">
+      <Icon name={`user`} class={`pr-1`} size={24} />
+    </span>
+    <Icon name={`arrow-down`}  size={18} id="arrowDropDown" />
+    <ul
+      class="dropdown-content round-6 overflow-hidden d-none right-0 absolute"
+    >
+      <li class="">
+        <a href="Auth.html#SignUp" class="fw-500 px-7 py-4 relative"> انشاء حساب </a>
+      </li>
+      <li class="">
+        <a href="Auth.html#SignIn" class="fw-500 px-7 py-4 relative"> تسجيل الدخول  </a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-items">
+    <a href="#!" class="nav-link pr-8">
+      <Icon name={`cart`} />
+    </a>
+  </li>
+</ul>

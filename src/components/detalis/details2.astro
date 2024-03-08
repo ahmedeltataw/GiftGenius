@@ -1,0 +1,117 @@
+---
+import Img from "@assets/images/products/pro.png";
+import Img1 from "@assets/images/products/pro1.png";
+import Button from "../ui/Button.astro";
+import { Image } from "astro:assets";
+---
+
+<section class="detailsSection">
+  <div class="container">
+    <div class="row">
+      <!-- right-side -->
+      <div class="col-5-lg col-12-md col-12-sm row-right">
+        <div class="right-side">
+          <p class="des name fs-48 fw-700 mb-6">ساعة اسمارت</p>
+          <p class="des price fs-36 fw-700 mb-6">
+            1800
+            <span class="fs-16 fw-500">ر.س</span>
+          </p>
+          <p class="des overview fw-500 fs-20 mb-6">
+            يعد هاتف Galaxy Note8 بوابتك إلى عالم جديد عند توصيله بهذه المجموعة
+            من الأجهزة والواجهات. إنه عالم يتم فيه تجاوز الحدود وكسر الحواجز حتى
+            تتمكن من رؤية المزيد ومشاركة المزيد والقيام بالمزيد - دون عناء.
+          </p>
+
+          <div class="mt-14 d-flex items-center">
+            <Button
+              type="button"
+              aria=" اضف للسلة"
+              ClassName="btn-popup  round-6"
+            >
+              <a href="/" class="py-6 px-12 fs-18 fw-700"> اضف للسلة</a>
+            </Button>
+            <div class="form-group relative">
+              <Button
+                type="button"
+                aria="more"
+                ClassName="absolute right-0 top-50 more"
+              >
+                +
+              </Button>
+              <input
+                type="text"
+                id="quantiy"
+                name="quantiy"
+                value="1"
+                class="text-center"
+              />
+              <Button
+                type="button"
+                aria="more"
+                ClassName="absolute left-0 top-50 mins"
+              >
+                -
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- left-side -->
+      <div class="col-7-lg col-12-md col-12-sm row-left">
+        <div class="left-side">
+          <div class="full-img-container round-6 relative d-flex">
+            <div class="big-img">
+              <Image
+                src={Img}
+                alt={`صورة المعلم`}
+                quality={70}
+                format="webp"
+                class={`round-6 mb-5`}
+              />
+            </div>
+            <div class="d-flex items-center allImg">
+              <div>
+                <Image
+                  src={Img}
+                  alt={`صورة المعلم`}
+                  quality={70}
+                  format="webp"
+                  class={`round-6 mb-5`}
+                />
+              </div>
+              <div>
+                <Image
+                  src={Img1}
+                  alt={`صورة المعلم`}
+                  quality={70}
+                  format="webp"
+                  class={`round-6 mb-5`}
+                />
+              </div>
+              <div>
+                <Image
+                  src={Img}
+                  alt={`صورة المعلم`}
+                  quality={70}
+                  format="webp"
+                  class={`round-6 mb-5`}
+                />
+              </div>
+              <div>
+                <Image
+                  src={Img1}
+                  alt={`صورة المعلم`}
+                  quality={70}
+                  format="webp"
+                  class={`round-6 mb-5`}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end row -->
+    </div>
+  </div>
+</section>

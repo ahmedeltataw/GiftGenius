@@ -1,23 +1,81 @@
-import type {LinkType} from "../types/types"
-export const HeaderData:LinkType[] = [
+import type { LinkType } from "../types/types"
+export const HeaderData: LinkType[] = [
     {
-        title:"الرئيسية",
-        path:"/"
+        title: "الرئيسية",
+        path: "/"
     },
     {
-        title:"من نحن",
-        path:"/"
+        title: "من نحن",
+        path: "/"
     },
     {
-        title:"منتجاتنا",
-        path:"/"
+        title: "منتجاتنا",
+        path: "product.html"
     },
     {
-        title:"خدماتنا",
-        path:"/"
-    },
-    {
-        title:"تواصل معنا",
-        path:"/"
+        title: "تواصل معنا",
+        path: "ContactUs.html"
     }
+]
+// card data
+import Img_1 from "../assets/images/products/pro.png"
+import type { CardType } from "../types/types";
+export const CardData: CardType[] = [
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+    {
+        title: " ساعة سمارت ",
+        price: "150 ر.س",
+        place: "الاقصر",
+        img: Img_1,
+        des: " ساعة سمارت انتاج شركة Ryn "
+    },
+
 ]

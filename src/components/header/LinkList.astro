@@ -1,17 +1,38 @@
 ---
 import { HeaderData } from "@data/data";
 import type { LinkType } from "../../types/types";
+import { Icon } from "astro-icon/components";
 ---
 
 <ul class="d-flex items-center link-list normalMenu">
   {
     HeaderData.map((link: LinkType) => (
-      <li class="nav-link pr-12">
-        <a class="fw-700  relative" href={link.title}>
+      <li class="nav-items pr-12">
+        <a class="fw-700 nav-link  relative" href={link.path}>
           {" "}
           {link.title}{" "}
         </a>
       </li>
     ))
   }
+  <li class="dropdown nav-items pr-12 relative d-flex items-center" id="drop1">
+    <span class="fw-700 nav-link relative">فئات</span>
+    <Icon name={`arrow-down`} class={`pr-1`} size={24} id="arrowDropDown" />
+    <ul
+      class="dropdown-content round-6 overflow-hidden d-none right-0 absolute"
+    >
+      <li class="">
+        <a href="Categories.html" class="fw-500 px-7 py-4 relative"> اعياد الميلاد</a>
+      </li>
+      <li class="">
+        <a href="Categories.html" class="fw-500 px-7 py-4 relative"> اعياد الجواز</a>
+      </li>
+      <li class="">
+        <a href="Categories.html" class="fw-500 px-7 py-4 relative"> عيد الحب</a>
+      </li>
+      <li class="">
+        <a href="Categories.html" class="fw-500 px-7 py-4 relative"> عيد الام</a>
+      </li>
+    </ul>
+  </li>
 </ul>

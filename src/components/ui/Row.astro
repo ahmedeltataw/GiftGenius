@@ -1,0 +1,28 @@
+---
+import type { CardType } from "../../types/types";
+import { CardData } from "../../data/data";
+import Card from "../Card.astro";
+interface Props {
+  isBooking: boolean;
+
+}
+const { isBooking } = Astro.props;
+---
+
+<div class="row gap-row-1 gap-x-12">
+  {
+    CardData.map((card: CardType) => (
+      <div class="col-3-lg col-6-md col-12-sm">
+        <Card
+          title={card.title}
+          img={card.img}
+          des={card.des}
+          place={card.place}
+          price={card.price}
+          btnText={isBooking ? "  التفاصيل" : " اضف للسلة"}
+          path={isBooking ? 'produtsDetails.html' : "detailsTouristView.html"}
+        />
+      </div>
+    ))
+  }
+</div>

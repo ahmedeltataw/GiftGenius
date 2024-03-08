@@ -1,0 +1,14 @@
+---
+import MainHeading from "../ui/mainHeading.astro"
+import Row from "../ui/Row.astro"
+interface Props{
+    title:string
+}
+const {title} =Astro.props
+---
+<section class="LastProduct">
+    <MainHeading title={title}/>
+    <div class="container">
+        <Row isBooking={true}/>
+    </div>
+</section>

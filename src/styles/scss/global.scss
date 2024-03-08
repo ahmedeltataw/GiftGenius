@@ -1,10 +1,14 @@
 @use "./helpers/color" as *;
-
+@use "../scss/components/header";
+@use "../scss/components/footer";
+@use "../scss/components/ui/borderMainHeading";
+@use "../scss/components/ui/Card";
+@use"../scss/components/ui/breadcrumb";
 body {
     background-image:
         linear-gradient(135deg in oklab,
             rgb(98% 98% 98%) 0%, 67%, rgb(75% 24% 38% / 30%) 101% 101%);
-
+    // font-weight: ;
 }
 
 html {

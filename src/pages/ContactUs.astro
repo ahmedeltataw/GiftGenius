@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/scss/pages/ContactUs.scss";
+import BreadCrumb from "../components/ui/breadcrumb.astro";
+import Contact from "../components/ContactUs/contact.astro";
+---
+
+<Layout title="Gift Genius | عيد الحب ">
+  <main>
+    <BreadCrumb
+      defPage=" الصفحة الرئيسية"
+      linkPage=" تواصل معانا "
+      isCrumb={false}
+      path="/"
+    />
+    <Contact/>
+  </main>
+</Layout>

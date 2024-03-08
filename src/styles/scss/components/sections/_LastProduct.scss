@@ -1,0 +1,6 @@
+@use "../../helpers/color" as *;
+@use "../../helpers/extend" as *;
+
+.LastProduct {
+    @extend %section;
+}

@@ -1,0 +1,38 @@
+@use "../../helpers/color" as*;
+@use "../../helpers/mixin" as*;
+
+.mainHeading {
+    padding: 6vh 0;
+
+    h2 {
+        color: $hover-1;
+        padding: 2vh;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            border-color: $hover-1;
+            border-style: solid;
+            width: 30px;
+            height: 30px;
+        }
+
+        &::before {
+
+            border-right: 4px;
+            border-bottom: 4px;
+            left: 0;
+            top: 0;
+        }
+
+        &::after {
+            border-top: 4px;
+            border-left: 4px;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+
+}

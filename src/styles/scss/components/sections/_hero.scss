@@ -1,0 +1,25 @@
+@use "../../helpers/color" as *;
+@use "../../helpers/extend" as *;
+
+.hero {
+    height: 100vh;
+    background-color: rgba($color: $hover-2, $alpha: .3);
+    padding-top: 130px;
+
+    .right-side {
+        h1 {
+            color: $hover;
+            font-size: clamp(36px, calc(12px + 8vw), 5rem);
+            // font-size: 5rem;
+
+            span {
+                color: $text;
+                opacity: .8;
+            }
+        }
+
+        p {
+            opacity: .7;
+        }
+    }
+}

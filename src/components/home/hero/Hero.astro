@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import Img from "../../../assets/images/banner-1.png";
+
+---
+
+<section class="hero">
+  
+  <div class="container">
+    <div class="row">
+      <!-- right -->
+      <div class="col-4-lg col-12-md col-12-sm">
+        <div class="right-side">
+          <h1 class="fw-700 mb-8">
+            <span class="fs-30">مرحبا بكم في</span>
+            <br />
+            Gifts Genius
+          </h1>
+          <p class="fs-28 fw-600">
+            حيث تكون كل مناسبة مميزة مع الهدية المثالية!
+          </p>
+        </div>
+      </div>
+      <!-- left -->
+      <div class="col-8-lg col-12-md col-12-sm img-col">
+        <div class="img-container">
+          <Image src={Img} alt={`banner img`} quality={70} format="webp" />
+        </div>
+      </div>
+      <!-- end row -->
+    </div>
+  </div>
+</section>

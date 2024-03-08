@@ -5,8 +5,9 @@ import Logo from "@assets/images/gifts-AELogo.png";
 //components
 import LinkList from "./LinkList.astro";
 import Button from "@components/ui/Button.astro";
+import IconList from "./IconList.astro";
 //style
-import "@styles/scss/components/header.scss";
+
 ---
 
 <header class="absolute top-0">
@@ -19,15 +20,15 @@ import "@styles/scss/components/header.scss";
           format="webp"
           quality={70}
           class={`img-cover`}
+          loading="eager"
         />
       </a>
       <Button type="button" ClassName="icon-nav-base" aria="open menu">
         <span></span><span></span><span></span>
       </Button>
       <LinkList />
+      <IconList/>
     </nav>
   </div>
 </header>
-<script>
 
-</script>

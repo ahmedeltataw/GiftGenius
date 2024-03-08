@@ -5,8 +5,9 @@ interface Props {
   BtnName: string;
   ClassNames: string;
   id: string;
+  path?:string,
 }
-const { title, des, BtnName, ClassNames, id } = Astro.props;
+const { title, des, BtnName, ClassNames, id , path } = Astro.props;
 //
 import Button from "../ui/Button.astro";
 ---
@@ -22,6 +23,6 @@ import Button from "../ui/Button.astro";
     aria={BtnName}
     id={id}
   >
-    {BtnName}
+      <a href={path}>{BtnName}</a>
   </Button>
 </div>

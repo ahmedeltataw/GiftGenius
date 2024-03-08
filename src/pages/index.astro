@@ -1,19 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-import SlideAuth from "@components/Auth/SlideAuth.astro";
+
+import Hero from '@components/home/hero/Hero.astro'
+import LastProduct from "../components/home/LastProduct.astro"
 //style
-import "../styles/scss/pages/Auth.scss";
-import bgImg from "../assets/images/gifts.png";
+import "../styles/scss/pages/home.scss";
+
 import { Image } from "astro:assets";
 ---
 
-<Layout title="Gift Genius ">
-  <main class="relative Main">
-    <div class="imgContainer absolute">
-      <Image src={bgImg} alt={`bg`} class={`img-cover`} />
-    </div>
-    <SlideAuth />
+<Layout title="Gift Genius | Home page">
+  <main >
+    <!-- hero section -->
+    <Hero/>
+    <!-- last product section -->
+    <LastProduct title="احدث المنتجات"/>
+    <!-- offer product section -->
   </main>
-  <script src="../scripts/Auth.ts"></script>
+
 </Layout>

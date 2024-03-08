@@ -11,38 +11,52 @@ let signIn = document.querySelector(".slideAuth .signIn") as HTMLDivElement;
 let signUp = document.querySelector(".slideAuth .signUp") as HTMLDivElement;
 //
 toggleRight.style.display = 'none'
-let handelAuth=(show:boolean)=>{
-    togglePanel.classList.toggle("active" , show)
-    container.classList.toggle("active",show)
-    toggleRight.classList.toggle("active",show)
-    toggleLeft.classList.toggle("active" ,!show)
+let handelAuth = (show: boolean) => {
+    togglePanel.classList.toggle("active", show)
+    container.classList.toggle("active", show)
+    toggleRight.classList.toggle("active", show)
+    toggleLeft.classList.toggle("active", !show)
     toggleLeft.style.opacity = show ? '0' : '1'
     toggleRight.style.opacity = show ? '1' : '0'
-    
+
     setTimeout(() => {
         toggleLeft.style.display = show ? 'none' : '';
         toggleRight.style.display = show ? '' : 'none';
     }, 500);
 }
-LoginBtn.addEventListener('click' , ()=>handelAuth(true))
-Register.addEventListener('click' , ()=>handelAuth(false))
+LoginBtn.addEventListener('click', () => handelAuth(true))
+Register.addEventListener('click', () => handelAuth(false))
 
 //this code responsive
-let handelResponsiveAuth=(show:boolean)=>{
-    signUp.classList.toggle("active", show);
+let handelResponsiveAuth = (show: boolean) => {
+    signUp.classList.toggle("active", !show);
     signIn.classList.toggle("active", show);
-    
+
     setTimeout(() => {
         signUp.style.display = show ? 'none' : '';
-    signIn.style.display = show ? '' : 'none';
+        signIn.style.display = show ? '' : 'none';
     }, 500)
 
 }
 signUpBtn.addEventListener("click", () => handelResponsiveAuth(true));
 signInBtn.addEventListener("click", () => handelResponsiveAuth(false));
-let resizeWidth= ()=>{
+let resizeWidth = () => {
     const windowWidth = window.innerWidth;
-    signIn.style.display = windowWidth >= 580 ? '':'none'
+    signIn.style.display = windowWidth >= 580 ? '' : 'none';
+    windowWidth > 580 ? signUp.classList.remove("active") : signUp.classList.add("active");
+    // signUp.classList.add("active" )
 }
 resizeWidth()
 window.addEventListener("resize", resizeWidth)
+
+
+
+let correctHost=()=>{
+    if (window.location.hash === "#SignIn"){
+        handelAuth(true)
+    } else{
+        handelAuth(false)
+    }
+}
+correctHost()
+window.addEventListener("hashchange", correctHost);

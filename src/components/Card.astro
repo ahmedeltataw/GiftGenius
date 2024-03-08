@@ -1,22 +1,51 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  des: string;
+  img: string | any;
+  place: string;
+  price: string;
+  btnText: string | any;
+  path: string;
 }
 
-const { href, title, body } = Astro.props;
+const { title, des, img, place, price, btnText, path } = Astro.props;
+//components
+import Button from "./ui/Button.astro";
+// style
+// import "../styles/scss/components/ui/Card.scss";
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<a href={path}>
+  <div class="card round-8">
+    <div class="top mx-auto">
+      <Image
+        src={img}
+        alt={`img for product`}
+        format="webp"
+        quality={70}
+        class={`img-cover`}
+      />
+    </div>
+    <div class="body">
+      <div class="pb-5 d-flex items-start justify-between">
+        <h3 class="fw-700 fs-20">{title}</h3>
+        <p class="price pb-5 fw-700 fs-28">
+          {price}
+        </p>
+      </div>
+      <p class="des fs-18 pb-6 fw-700 line-normal">{des}</p>
 
+      <Button
+        type="button"
+        aria=" التفاصيل"
+        ClassName="btn-popup booking-btn mb-1 py-3 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500"
+      >
+        {btnText}
+      </Button>
+    </div>
+    <!-- end -->
+  </div>
+</a>

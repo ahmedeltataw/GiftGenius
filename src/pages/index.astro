@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 
 import Hero from '@components/home/hero/Hero.astro'
 import LastProduct from "../components/home/LastProduct.astro"
+import Steps from "../components/home/Steps.astro"
 //style
 import "../styles/scss/pages/home.scss";
 
@@ -11,11 +12,9 @@ import "../styles/scss/pages/home.scss";
 
 <Layout title="Gift Genius | الصفحة الرئيسية ">
   <main >
-    <!-- hero section -->
     <Hero/>
-    <!-- last product section -->
-    <LastProduct title="احدث المنتجات"/>
-    <!-- offer product section -->
+    <LastProduct title="احدث المنتجات" isFilter={false} />
+    <Steps/>
   </main>
 
 </Layout>

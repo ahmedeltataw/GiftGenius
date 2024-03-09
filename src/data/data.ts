@@ -5,10 +5,6 @@ export const HeaderData: LinkType[] = [
         path: "/"
     },
     {
-        title: "من نحن",
-        path: "/"
-    },
-    {
         title: "منتجاتنا",
         path: "product.html"
     },

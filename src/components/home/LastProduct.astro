@@ -1,14 +1,30 @@
 ---
-import MainHeading from "../ui/mainHeading.astro"
-import Row from "../ui/Row.astro"
-interface Props{
-    title:string
+import MainHeading from "../ui/mainHeading.astro";
+import Row from "../ui/Row.astro";
+interface Props {
+  title: string;
+  isFilter:boolean,
 }
-const {title} =Astro.props
+const { title , isFilter } = Astro.props;
 ---
+
 <section class="LastProduct">
-    <MainHeading title={title}/>
-    <div class="container">
-        <Row isBooking={true}/>
-    </div>
+  <MainHeading title={title} />
+  <div class="container">
+    {
+        isFilter&&(
+        <div class="top-filter d-flex items-center justify-between mb-14">
+        <div class="right-filter">
+          <input type="text" placeholder="اسم المنتج" />
+        </div>
+        <div class="left-filter">
+          <input type="text" placeholder=" المنتجات المتاحة" />
+          <input type="text" placeholder=" السعر" />
+        </div>
+      </div>
+        )
+    }
+    <Row isBooking={true} />
+
+  </div>
 </section>

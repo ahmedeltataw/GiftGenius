@@ -1,6 +1,49 @@
 @use "../../helpers/color" as *;
 @use "../../helpers/extend" as *;
+@use "../../helpers/mixin" as *;
 
 .LastProduct {
     @extend %section;
+    min-height: 70vh;
+
+    .top-filter {
+        input {
+            @include input(48px, 200px, #c9c9c9);
+            padding-right: 10px;
+            max-width: 100%;
+            border-radius: 6px;
+        }
+
+        .right-filter {
+            input {
+                width: 250px;
+            }
+        }
+    }
+}
+
+.steps {
+    @extend %section;
+    min-height: 60vh;
+
+    .box {
+        height: 150px;
+
+        .icon-box {
+            svg {
+                width: 36px;
+                color: $hover-1;
+            }
+        }
+
+        p {
+            // width: 250px;
+            opacity: .7;
+            line-height: 1.2;
+        }
+
+        h3 {
+            color: $hover;
+        }
+    }
 }

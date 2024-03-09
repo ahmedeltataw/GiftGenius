@@ -49,6 +49,6 @@ let MinsQuantiy = () => {
 }
 More.addEventListener("click", MoreQuantiy)
 Mins.addEventListener("click", MinsQuantiy)
-quantiy.addEventListener("change" , (e:Event)=>{
-    let correctValue = (e.target as HTMLInputElement) !== null ? (e.target as HTMLInputElement).value : '1'
-})
+// quantiy.addEventListener("change" , (e:Event)=>{
+//     let correctValue = (e.target as HTMLInputElement) !== null ? (e.target as HTMLInputElement).value : '1'
+// })

@@ -7,11 +7,26 @@ let menuBtn = document.querySelector(".icon-nav-base") as HTMLButtonElement;
 let drop1 = document.querySelector("#drop1") as HTMLLIElement;
 
 let drop2 = document.querySelector("#drop2") as HTMLLIElement;
+let drop3 = document.querySelector("#drop3") as HTMLLIElement;
+let drop4 = document.querySelector("#drop4") as HTMLLIElement;
+let drop5 = document.querySelector("#drop5") as HTMLLIElement;
 
 let dropContent = document.querySelector("#drop1 .dropdown-content") as HTMLUListElement;
 let dropLi = document.querySelectorAll("#drop1 .dropdown-content li") as NodeListOf<HTMLLIElement>;
+//
 let dropContent2 = document.querySelector("#drop2 .dropdown-content") as HTMLUListElement;
 let dropLi2 = document.querySelectorAll("#drop2 .dropdown-content li") as NodeListOf<HTMLLIElement>;
+//
+let dropContent3 = document.querySelector("#drop3 .dropdown-content") as HTMLUListElement;
+let dropLi3 = document.querySelectorAll("#drop3 .dropdown-content li") as NodeListOf<HTMLLIElement>;
+
+//
+let dropContent4 = document.querySelector("#drop4 .dropdown-content") as HTMLUListElement;
+let dropLi4 = document.querySelectorAll("#drop4 .dropdown-content li") as NodeListOf<HTMLLIElement>;
+//
+let dropContent5 = document.querySelector("#drop5 .dropdown-content") as HTMLUListElement;
+let dropLi5 = document.querySelectorAll("#drop5 .dropdown-content li") as NodeListOf<HTMLLIElement>;
+
 let arrowDropDown = document.getElementById("arrowDropDown") as HTMLElement
 //function
 // *****responsive header *********
@@ -124,8 +139,11 @@ let openDropMenu = (show: boolean , selectDrop:HTMLUListElement ,selectDropLi:No
 let isOpen = false;
 window.addEventListener("resize", responsiveHeader);
 drop1.addEventListener("click", ()=>toggleDropdown(drop1,dropContent ,dropLi));
-console.log(dropContent)
+
 drop2.addEventListener("click", ()=>toggleDropdown(drop2,dropContent2 ,dropLi2));
+drop3.addEventListener("click", ()=>toggleDropdown(drop3,dropContent3 ,dropLi3));
+drop4.addEventListener("click", ()=>toggleDropdown(drop3,dropContent4 ,dropLi4));
+drop5.addEventListener("click", ()=>toggleDropdown(drop3,dropContent5 ,dropLi5));
 
 
 

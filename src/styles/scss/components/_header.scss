@@ -1,6 +1,17 @@
 @use "../helpers/color" as *;
 @use "../helpers/extend" as *;
 
+.topNav {
+    background-color: $hover-1;
+    width: 100%;
+    min-height: 40px;
+
+    svg {
+        color: #fff;
+        width: 28px;
+    }
+}
+
 header {
     background-color: rgba($color: #fafafa, $alpha: .8);
     backdrop-filter: blur(2px);
@@ -8,12 +19,19 @@ header {
     // border-bottom: 1px solid #ffffff;
     width: 100%;
     z-index: 1024;
+    top: 48px;
+
+
 
     nav {
         .logo {
 
             height: 80px;
             // width: 80px;
+        }
+
+        .arrow5 {
+            width: 24px;
         }
 
         .link-list {
@@ -32,7 +50,7 @@ header {
             a {
                 color: $text;
                 transition: $t-s;
-                
+
             }
 
             span {
@@ -52,7 +70,7 @@ header {
                 }
 
                 .nav-link {
-                    
+
 
                     &::before,
                     &::after {
@@ -71,14 +89,14 @@ header {
                     &::after {
                         bottom: 0;
                         left: -7px;
-                     
+
 
                     }
 
                     &::before {
                         top: 0;
                         right: -7px;
-                       
+
 
                     }
 
@@ -87,9 +105,9 @@ header {
 
                         &::before,
                         &::after {
-                            
+
                             height: 100%;
-                          
+
 
                         }
                     }
@@ -98,7 +116,7 @@ header {
 
             }
 
-            
+
 
             @media(max-width: 991px) {
                 display: none;

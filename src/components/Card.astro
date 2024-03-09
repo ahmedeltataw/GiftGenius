@@ -6,12 +6,12 @@ interface Props {
   des: string;
   img: string | any;
   place: string;
-  price: string;
+  price?: string;
   btnText: string | any;
   path: string;
 }
 
-const { title, des, img, place, price, btnText, path } = Astro.props;
+const { title, des, img, price, btnText, path } = Astro.props;
 //components
 import Button from "./ui/Button.astro";
 // style

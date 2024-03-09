@@ -1,13 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "../styles/scss/pages/products.scss"
+import "../styles/scss/pages/products.scss";
 import BreadCrumb from "../components/ui/breadcrumb.astro";
-import LastProduct from "../components/home/LastProduct.astro"
+import LastProduct from "../components/home/LastProduct.astro";
 ---
 
 <Layout title="Gift Genius | المنتجات ">
-    <main >
-        <BreadCrumb defPage=" الصفحة الرئيسية" linkPage="المنتجات " isCrumb={false} path="/"/>
-        <LastProduct title="احدث العروض" />
-    </main>
-  </Layout>
+  <main>
+    <BreadCrumb
+      defPage=" الصفحة الرئيسية"
+      linkPage="المنتجات "
+      isCrumb={false}
+      path="/"
+    />
+    <LastProduct title="احدث العروض" isFilter={false} />
+    <LastProduct title=" اختر الي يناسبك " isFilter={true} />
+  </main>
+</Layout>

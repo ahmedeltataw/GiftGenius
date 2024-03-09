@@ -1,0 +1,63 @@
+---
+import MainHeading from "../ui/mainHeading.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="steps">
+  <MainHeading title="خطوات العمل" />
+  <div class="container">
+    <div class="row">
+      <div class="col-3-lg col-6-md col-12-sm">
+        <div class="box d-flex items-start mt-14">
+          <div class="icon-box">
+            <Icon name={`gift-icon`} size={24} />
+          </div>
+          <div class="details-box pr-5">
+            <h3 class="fs-36 fw-700 line-relaxed">ختار الهدية</h3>
+            <p class="fs-18 fw-500 line-relaxed">
+              تقدم مجموعة متنوعة من الهدايا لجميع المناسبات
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3-lg col-6-md col-12-sm">
+        <div class="box d-flex items-start mt-14">
+          <div class="icon-box">
+            <Icon name={`cart2`} size={24} />
+          </div>
+          <div class="details-box pr-5">
+            <h3 class="fs-36 fw-700 line-relaxed">اشتري الهدية</h3>
+            <p class="fs-18 fw-500 line-relaxed">يمكنك التسوق والدفع لدينا بافضل الطرق</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3-lg col-6-md col-12-sm">
+        <div class="box d-flex items-start mt-14">
+          <div class="icon-box">
+            <Icon name={`car`} size={24} />
+          </div>
+          <div class="details-box pr-5">
+            <h3 class="fs-36 fw-700 line-relaxed">ارسال الهدية</h3>
+            <p class="fs-18 fw-500 line-relaxed">
+              يمكنك ارسال الهدية للشخص الذي تريد ما عليك سوى اخطارنا بالمعلومات
+              المطلوبة
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-3-lg col-6-md col-12-sm">
+        <div class="box d-flex items-start mt-14">
+          <div class="icon-box">
+            <Icon name={`car`} size={24} />
+          </div>
+          <div class="details-box pr-5">
+            <h3 class="fs-36 fw-700 line-relaxed"> يقترح هدية </h3>
+            <p class="fs-18 fw-500 line-relaxed">
+                اذا كنت لا تجيد اختيار الهدايا المناسبة يكن للذكاء الاصطناعي لدينا مساعدتك
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -6,15 +6,24 @@ import Logo from "@assets/images/gifts-AELogo.png";
 import LinkList from "./LinkList.astro";
 import Button from "@components/ui/Button.astro";
 import IconList from "./IconList.astro";
+import { Icon } from "astro-icon/components";
 //style
-
 ---
 
-<header class="absolute top-0">
+<nav class="topNav absolute top-0 py-5">
+  <div class="container">
+    <div class="icons d-flex items-center gap-y-5">
+      <Icon name={`facebook`} size={24} />
+      <Icon name={`inst`} size={24} />
+      <Icon name={`twitter`} size={24} />
+      <!-- <Icon name={`facebook`} size={24} /> -->
+    </div>
+  </div>
+</nav>
+<header class="absolute">
   <div class="container">
     <nav class="d-flex items-center justify-between py-5">
-      
-      <IconList/>
+      <IconList />
       <a href="/" class="logo mx-auto">
         <Image
           src={Logo}
@@ -29,8 +38,6 @@ import IconList from "./IconList.astro";
         <span></span><span></span><span></span>
       </Button>
       <LinkList />
-      
     </nav>
   </div>
 </header>
-

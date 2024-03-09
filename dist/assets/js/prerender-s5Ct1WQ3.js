@@ -3,13 +3,14 @@ import { l as lookup, i as isRemoteImage, a as isESMImportedImage, b as isLocalS
 import { c as createAstro, b as createComponent, r as renderTemplate, d as addAttribute, u as unescapeHTML, e as renderComponent, A as AstroError, f as ExpectedImageOptions, E as ExpectedImage, F as FailedToFetchRemoteImageDimensions, g as InvalidImageService, h as ImageMissingAlt, m as maybeRenderHead, s as spreadAttributes, i as Fragment, j as renderSlot, k as renderHead } from './astro-CR1Hd-Mt.js';
 import 'kleur/colors';
 /* empty css                       */
-import 'clsx';
 /* empty css                             */
 /* empty css                            */
 /* empty css                                 */
+import 'clsx';
+/* empty css                         */
 import { join } from 'node:path';
 import { Buffer as Buffer$1 } from 'node:buffer';
-/* empty css                       */
+/* empty css                             */
 import { getIconData, iconToSVG } from '@iconify/utils';
 /* empty css                        */
 
@@ -22,9 +23,9 @@ var ro = Object.create; var wn = Object.defineProperty; var so = Object.getOwnPr
 Expected \`normal\`, \`bold\` or a number.`), !t) return e - 400; if (e <= 400 && t >= 400) return 0; let r = e - 400, s = t - 400; return Math.abs(r) < Math.abs(s) ? r : s
 } function _i(n) { return n.reduce((e, t) => { if (!e) return t; let r = $i(e.weight), s = $i(t.weight); if (r === s && (typeof t.style > "u" || t.style === "normal")) return t; let a = Math.abs(r), i = Math.abs(s); return i < a || a === i && s < r ? t : e }) } var ud = { woff: "font/woff", woff2: "font/woff2", ttf: "font/ttf", otf: "font/otf", eot: "application/vnd.ms-fontobject" }; function kr(n) { return n || "./public" } function pn(n, e) { return e.includes("https") ? e : "/" + dn(n, e) } async function Ir() { let n; try { return n = await import('node:fs'), n } catch { } } async function cd() { let n; try { return n = await import('node:os'), n } catch { } } async function bn(n) { try { let e = await Ir(); if (e) { let t = join(n, ".astro_font"); return e.existsSync(t) || e.mkdirSync(t), e.rmSync(t, { recursive: !0, force: !0 }), n } } catch { } } function Up(n) { let e = /\.(woff|woff2|eot|ttf|otf)$/.exec(n)?.[1]; if (!e) throw Error(`Unexpected file \`${n}\``); return ud[e] } async function Qi(n) { let e = await Ir(); if (n.includes("https://")) { let t = await fetch(n); return Buffer$1.from(await t.arrayBuffer()) } else if (e && e.existsSync(n)) return e.readFileSync(n) } function fd(n) { let e = n.lastIndexOf("/"); return e !== -1 ? n.substring(e + 1) : n } function hd(n) { let e = 0; if (n.length === 0) return e; for (let t = 0; t < n.length; t++) { let r = n.charCodeAt(t); e = (e << 5) - e + r, e = e & e; } return Math.abs(e).toString(16) + n.length } async function dd(n) { let [e, t, r, s] = n, a = await Ir(); if (!a) return [e, t, r]; let i = fd(r), l = join(s, "__astro_font_generated__"), u = join(l, i); if (a.existsSync(u)) return [e, t, u]; if (!await bn(process.cwd())) return [e, t, r]; a.existsSync(l) || (a.mkdirSync(l), console.log(`[astro-font] \u25B6 Created ${l}`)); let f = await Qi(r); return f ? (console.log(`[astro-font] \u25B6 Generated ${u}`), a.writeFileSync(u, f), [e, t, u]) : [e, t, r] } function pd(n) { let e, t = [], r = /@font-face\s*{([^}]+)}/g; for (; (e = r.exec(n)) !== null;) { let s = e[1], a = {}; s.split(";").forEach(i => { if (i.includes("src: ")) { let l = i.indexOf("for"); a.path = i.trim().substring(9, l ? l - 5 : i.length - 1).trim(); } i.includes("-style: ") && (a.style = i.split(":").map(l => l.trim())[1]), i.includes("-weight: ") && (a.weight = i.split(":").map(l => l.trim())[1]), i.includes("unicode-range: ") && (a.css || (a.css = {}), a.css["unicode-range"] = i.split(":").map(l => l.trim())[1]); }), t.push(a); } return t } async function Vp(n) { let e = [...n]; await Promise.all(e.map(r => r.googleFontsURL ? fetch(r.googleFontsURL).then(s => s.text()).then(s => { r.src = pd(s); }) : {})); let t = []; return e.forEach((r, s) => { r.fetch && r.src.forEach((a, i) => { t.push([s, i, a.path, kr(r.basePath)]); }); }), t.length > 0 && (await Promise.all(t.map(dd))).forEach(s => { e[s[0]].src[s[1]].path = s[2]; }), e } async function bd(n) { let e = [], t, r, s, a, [i, l] = await Promise.all([cd(), Ir()]); if (l) { if (i && (t = await Promise.all([bn(i.tmpdir()), bn("/tmp")]), r = t.find(u => u !== void 0), a = n.cacheDir || r, a)) { let u = h => `${h.path}_${h.style}_${h.weight}`, c = n.src.map(u), f = hd(c.join("_")) + ".txt"; if (s = join(a, f), l.existsSync(s)) try { let h = l.readFileSync(s, "utf8"); return JSON.parse(h) } catch { } } if (await Promise.all(n.src.map(u => Qi(u.path).then(c => { c && e.push({ style: u.style, weight: u.weight, metadata: an(c) }); }))), l && e.length > 0) { let { metadata: u } = _i(e), c = Ji(u, n.fallback); return r && (a && (l.existsSync(a) || (l.mkdirSync(a), n.verbose && console.log(`[astro-font] \u25B6 Created ${a}`))), s && (l.existsSync(s) || (l.writeFileSync(s, JSON.stringify(c), "utf8"), n.verbose && console.log(`[astro-font] \u25B6 Created ${s}`)))), c } } return {} } function Gp(n) { return n.preload === !1 ? n.src.filter(e => e.preload === !0).map(e => pn(kr(n.basePath), e.path)) : n.src.filter(e => e.preload !== !1).map(e => pn(kr(n.basePath), e.path)) } async function zp(n) { try { return n.src.map(t => { let r = Object.entries(t.css || {}).map(([s, a]) => `${s}: ${a}`); return t.weight && r.push(`font-weight: ${t.weight}`), t.style && r.push(`font-style: ${t.style}`), n.name && r.push(`font-family: ${n.name}`), n.display && r.push(`font-display: ${n.display}`), r.push(`src: url(${pn(kr(n.basePath), t.path)})`), `@font-face {${r.join(";")}}` }) } catch (e) { console.log(e); } return [] } async function Wp(n) { let e = [], t = await bd(n), r = `'${n.fallbackName || "_font_fallback_" + Math.floor(Math.random() * Date.now())}'`; return n.selector && (e.push(n.selector), e.push("{")), Object.keys(t).length > 0 ? (n.selector && (e.push(`font-family: ${n.name}, ${r}, ${n.fallback};`), e.push("}")), typeof n.cssVariable == "boolean" && n.cssVariable ? e.push(`:root{ --astro-font: ${n.name}, ${r}, ${n.fallback}; }`) : typeof n.cssVariable == "string" && n.cssVariable.length > 0 && e.push(`:root{ --${n.cssVariable}: ${n.name}, ${r}, ${n.fallback}; }`), e.push("@font-face"), e.push("{"), e.push(`font-family: ${r};`), e.push(`size-adjust: ${t.sizeAdjust};`), e.push(`src: local('${t.fallbackFont}');`), e.push(`ascent-override: ${t.ascentOverride};`), e.push(`descent-override: ${t.descentOverride};`), e.push(`line-gap-override: ${t.lineGapOverride};`), e.push("}")) : (n.selector && (e.push(`font-family: ${n.name}, ${n.fallback};`), e.push("}")), typeof n.cssVariable == "boolean" && n.cssVariable ? e.push(`:root{ --astro-font: ${n.name}, ${r}, ${n.fallback}; }`) : typeof n.cssVariable == "string" && n.cssVariable.length > 0 && e.push(`:root{ --${n.cssVariable}: ${n.name}, ${r}, ${n.fallback}; }`)), e.join(" ") }
 
-const $$Astro$v = createAstro();
+const $$Astro$w = createAstro();
 const $$AstroFont = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$v, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$w, $$props, $$slots);
   Astro2.self = $$AstroFont;
   const { config } = Astro2.props;
   const resolvedConfig = await Vp(config);
@@ -34,16 +35,16 @@ const $$AstroFont = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${preloads.flat().map((content) => renderTemplate`<link as="font" crossorigin rel="preload"${addAttribute(content, "href")}${addAttribute(Up(content), "type")}>`)}${baseCSS.then((res) => res.flat().map((content) => renderTemplate`<style>${unescapeHTML(content)}</style>`)).catch(console.log)}${fallbackCSS.then((res) => res.flat().map((content) => renderTemplate`<style>${unescapeHTML(content)}</style>`)).catch(console.log)}`;
 }, "D:/project/version/2/Astro/presens/node_modules/astro-font/AstroFont.astro", void 0);
 
-const $$Astro$u = createAstro();
+const $$Astro$v = createAstro();
 const $$Font = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$u, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$v, $$props, $$slots);
   Astro2.self = $$Font;
   return renderTemplate`${renderComponent($$result, "AstroFont", $$AstroFont, { "config": [
     {
       src: [],
-      name: "Tajawal",
+      name: "Cairo",
       // Google Fonts URL
-      googleFontsURL: "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap",
+      googleFontsURL: "https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap",
       preload: true,
       display: "swap",
       selector: "body",
@@ -204,9 +205,9 @@ async function getImage$1(options, imageConfig) {
   };
 }
 
-const $$Astro$t = createAstro();
+const $$Astro$u = createAstro();
 const $$Image = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$t, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$u, $$props, $$slots);
   Astro2.self = $$Image;
   const props = Astro2.props;
   if (props.alt === void 0 || props.alt === null) {
@@ -226,9 +227,9 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(additionalAttributes)}${spreadAttributes(image.attributes)}>`;
 }, "D:/project/version/2/Astro/presens/node_modules/astro/components/Image.astro", void 0);
 
-const $$Astro$s = createAstro();
+const $$Astro$t = createAstro();
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$s, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$t, $$props, $$slots);
   Astro2.self = $$Picture;
   const defaultFormats = ["webp"];
   const defaultFallbackFormat = "png";
@@ -374,13 +375,13 @@ const CardData = [
   }
 ];
 
-const icons = {"local":{"prefix":"local","lastModified":1709925536,"icons":{"arrow-down":{"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m7 10 5 5 5-5\"/>"},"arrow-left":{"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 6 2 16l8 10M2 16h28\"/>","width":32,"height":32},"cart":{"body":"<g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\"><path fill=\"currentColor\" d=\"M19.5 22a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3\"/><path d=\"M16.5 4H22l-2 11h-4.5m1-11-1 11m1-11h-5.75m4.75 11h-4m-.75-11H5l2 11h4.5m-.75-11 .75 11M5 4c-.167-.667-1-2-3-2m18 13H5.23c-1.784 0-2.73.781-2.73 2 0 1.219.946 2 2.73 2H19.5\"/></g>"},"user":{"body":"<path fill=\"currentColor\" d=\"M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5M20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1z\"/>"}},"width":24,"height":24}};
+const icons = {"local":{"prefix":"local","lastModified":1709979692,"icons":{"arrow-down":{"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m7 10 5 5 5-5\"/>"},"arrow-left":{"body":"<path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 6 2 16l8 10M2 16h28\"/>","width":32,"height":32},"cart":{"body":"<g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\"><path fill=\"currentColor\" d=\"M19.5 22a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3\"/><path d=\"M16.5 4H22l-2 11h-4.5m1-11-1 11m1-11h-5.75m4.75 11h-4m-.75-11H5l2 11h4.5m-.75-11 .75 11M5 4c-.167-.667-1-2-3-2m18 13H5.23c-1.784 0-2.73.781-2.73 2 0 1.219.946 2 2.73 2H19.5\"/></g>"},"delete":{"body":"<path fill=\"currentColor\" d=\"M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6z\"/>"},"user":{"body":"<path fill=\"currentColor\" d=\"M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5M20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1z\"/>"}},"width":24,"height":24}};
 
 const cache = /* @__PURE__ */ new WeakMap();
 
-const $$Astro$r = createAstro();
+const $$Astro$s = createAstro();
 const $$Icon = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$r, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$s, $$props, $$slots);
   Astro2.self = $$Icon;
   class AstroIconError extends Error {
     constructor(message) {
@@ -433,253 +434,70 @@ const $$Icon = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<svg${spreadAttributes(normalizedProps)}${addAttribute(name, "data-icon")}> ${title && renderTemplate`<title>${title}</title>`} ${inline ? renderTemplate`${renderComponent($$result, "Fragment", Fragment, { "id": id }, { "default": ($$result2) => renderTemplate`${unescapeHTML(normalizedBody)}` })}` : renderTemplate`${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${includeSymbol && renderTemplate`<symbol${addAttribute(id, "id")}>${unescapeHTML(normalizedBody)}</symbol>`}<use${addAttribute(`#${id}`, "xlink:href")}></use> ` })}`} </svg>`;
 }, "D:/project/version/2/Astro/presens/node_modules/astro-icon/components/Icon.astro", void 0);
 
-const $$Astro$q = createAstro();
+const $$Astro$r = createAstro();
 const $$LinkList = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$q, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$r, $$props, $$slots);
   Astro2.self = $$LinkList;
-  return renderTemplate`${maybeRenderHead()}<ul class="d-flex items-center link-list normalMenu"> ${HeaderData.map((link) => renderTemplate`<li class="nav-items pr-12"> <a class="fw-700 nav-link  relative"${addAttribute(link.path, "href")}> ${" "} ${link.title}${" "} </a> </li>`)} <li class="dropdown nav-items pr-12 relative d-flex items-center" id="drop1"> <span class="fw-700 nav-link relative">فئات</span> ${renderComponent($$result, "Icon", $$Icon, { "name": `arrow-down`, "class": `pr-1`, "size": 24, "id": "arrowDropDown" })} <ul class="dropdown-content round-6 overflow-hidden d-none right-0 absolute"> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative"> اعياد الميلاد</a> </li> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative"> اعياد الجواز</a> </li> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative"> عيد الحب</a> </li> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative"> عيد الام</a> </li> </ul> </li> </ul>`;
+  return renderTemplate`${maybeRenderHead()}<ul class="d-flex items-center link-list normalMenu"> ${HeaderData.map((link) => renderTemplate`<li class="nav-items pr-8"> <a class="fw-500 nav-link  relative"${addAttribute(link.path, "href")}> ${" "} ${link.title}${" "} </a> </li>`)} <li class="dropdown nav-items pr-12 relative d-flex items-center" id="drop1"> <span class="fw-500 nav-link relative">فئات</span> ${renderComponent($$result, "Icon", $$Icon, { "name": `arrow-down`, "class": `pr-1`, "size": 24, "id": "arrowDropDown" })} <ul class="dropdown-content round-6 overflow-hidden d-none right-0 absolute"> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative">
+اعياد الميلاد</a> </li> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative">
+اعياد الجواز</a> </li> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative">
+عيد الحب</a> </li> <li class=""> <a href="Categories.html" class="fw-500 px-7 py-4 relative">
+عيد الام</a> </li> </ul> </li> </ul>`;
 }, "D:/project/version/2/Astro/presens/src/components/header/LinkList.astro", void 0);
 
-const $$Astro$p = createAstro();
+const $$Astro$q = createAstro();
 const $$Button = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$p, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$q, $$props, $$slots);
   Astro2.self = $$Button;
   const { ClassName, type, aria, id } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<button${addAttribute(`btn ${ClassName}`, "class:list")}${addAttribute(type, "type")}${addAttribute(aria, "aria-label")}${addAttribute(id, "id")}> ${renderSlot($$result, $$slots["default"])} </button>`;
 }, "D:/project/version/2/Astro/presens/src/components/ui/Button.astro", void 0);
 
-const $$Astro$o = createAstro();
+const $$Astro$p = createAstro();
 const $$IconList = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$o, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$p, $$props, $$slots);
   Astro2.self = $$IconList;
-  return renderTemplate`${maybeRenderHead()}<ul class="iconList d-flex items-center"> <li class="dropdown  nav-items pr-12 relative d-flex items-center" id="drop2"> <span class="fw-700 nav-link relative"> ${renderComponent($$result, "Icon", $$Icon, { "name": `user`, "class": `pr-1`, "size": 24 })} </span> ${renderComponent($$result, "Icon", $$Icon, { "name": `arrow-down`, "size": 18, "id": "arrowDropDown" })} <ul class="dropdown-content round-6 overflow-hidden d-none right-0 absolute"> <li class=""> <a href="Auth.html#SignUp" class="fw-500 px-7 py-4 relative"> انشاء حساب </a> </li> <li class=""> <a href="Auth.html#SignIn" class="fw-500 px-7 py-4 relative"> تسجيل الدخول </a> </li> </ul> </li> <li class="nav-items"> <a href="#!" class="nav-link pr-8"> ${renderComponent($$result, "Icon", $$Icon, { "name": `cart` })} </a> </li> </ul>`;
+  return renderTemplate`${maybeRenderHead()}<ul class="iconList d-flex items-center"> <li class="nav-items"> <a href="cart.html" class="nav-link mt-3"> ${renderComponent($$result, "Icon", $$Icon, { "name": `cart` })} </a> </li> <li class="dropdown nav-items pr-8 relative d-flex items-center" id="drop2"> <span class="fw-700 nav-link relative"> ${renderComponent($$result, "Icon", $$Icon, { "name": `user`, "class": `pr-1`, "size": 24 })} </span> ${renderComponent($$result, "Icon", $$Icon, { "name": `arrow-down`, "size": 18, "id": "arrowDropDown" })} <ul class="dropdown-content round-6 overflow-hidden d-none right-0 absolute"> <li class=""> <a href="signUp.html" class="fw-500 px-7 py-4 relative">
+انشاء حساب
+</a> </li> <li class=""> <a href="signIn.html" class="fw-500 px-7 py-4 relative">
+تسجيل الدخول
+</a> </li> </ul> </li> </ul>`;
 }, "D:/project/version/2/Astro/presens/src/components/header/IconList.astro", void 0);
 
-const $$Astro$n = createAstro();
+const $$Astro$o = createAstro();
 const $$Header = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$n, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$o, $$props, $$slots);
   Astro2.self = $$Header;
-  return renderTemplate`${maybeRenderHead()}<header class="absolute top-0"> <div class="container"> <nav class="d-flex items-center justify-between py-5"> <a href="/" class="logo"> ${renderComponent($$result, "Image", $$Image, { "src": Logo, "alt": `logo for Gift Genius `, "format": "webp", "quality": 70, "class": `img-cover`, "loading": "eager" })} </a> ${renderComponent($$result, "Button", $$Button, { "type": "button", "ClassName": "icon-nav-base", "aria": "open menu" }, { "default": ($$result2) => renderTemplate` <span></span><span></span><span></span> ` })} ${renderComponent($$result, "LinkList", $$LinkList, {})} ${renderComponent($$result, "IconList", $$IconList, {})} </nav> </div> </header>`;
+  return renderTemplate`${maybeRenderHead()}<header class="absolute top-0"> <div class="container"> <nav class="d-flex items-center justify-between py-5"> ${renderComponent($$result, "IconList", $$IconList, {})} <a href="/" class="logo mx-auto"> ${renderComponent($$result, "Image", $$Image, { "src": Logo, "alt": `logo for Gift Genius `, "format": "webp", "quality": 70, "class": `img-cover`, "loading": "eager" })} </a> ${renderComponent($$result, "Button", $$Button, { "type": "button", "ClassName": "icon-nav-base", "aria": "open menu" }, { "default": ($$result2) => renderTemplate` <span></span><span></span><span></span> ` })} ${renderComponent($$result, "LinkList", $$LinkList, {})} </nav> </div> </header>`;
 }, "D:/project/version/2/Astro/presens/src/components/header/Header.astro", void 0);
 
-const $$Astro$m = createAstro();
+const $$Astro$n = createAstro();
 const $$Footer = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$m, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$n, $$props, $$slots);
   Astro2.self = $$Footer;
-  return renderTemplate`${maybeRenderHead()}<footer> <div class="container d-flex items-start justify-between"> <div class="footer-ul about-us"> <p class="title fs-24 fw-700">من نحن</p> <p class="dec line-relaxed fs-16">
+  return renderTemplate`${maybeRenderHead()}<footer> <div class="container d-flex items-start justify-between"> <div class="footer-ul about-us"> <p class="title fs-24 fw-700">اعرف عنا</p> <p class="dec line-relaxed fs-16">
 نحن نقدم لك احدث منتجات الهدايا التي تتناسب مع جميع المناسبات بافضل
         الاسعار
-</p> </div> <!--  --> <div class="footer-ul contact-us"> <p class="title fs-24 fw-700">تواصل معانا</p> <p class="dec line-relaxed fs-16">
-تطبيق الويب المثالي لتتبع طعامك وممارسة الرياضة والوزن أثناء التنقل
-</p> </div> <!--  --> <div class="footer-ul news"> <p class="title fs-24 fw-700">اخر الاحداث</p> <p class="dec line-relaxed fs-16">
-يمكنك الوثوق بنا، فنحن نرسل العروض فقط، وليس بريدًا عشوائيًا واحدًا
-</p> <form action="/"> <div class="from-group relative mt-7"> <input type="email" placeholder="البريد الالكتروني" class="round-4 pr-5"> ${renderComponent($$result, "Button", $$Button, { "type": "submit", "aria": "send email", "ClassName": " btn-popup sendEmails round-4 px-9  top-0 left-0" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Icon", $$Icon, { "name": "arrow-left" })} ` })} </div> </form> </div> </div> </footer>`;
+</p> </div> <!--  --> <div class="footer-ul contact-us"> <p class="title fs-24 fw-700">تواصل معانا</p> <p class="dec line-relaxed fs-16">gifts@gmail.com</p> <p class="dec line-relaxed fs-16 pt-4">gifts-2@gmail.com</p> </div> <!--  --> <div class="footer-ul news"> <p class="title fs-24 fw-700">احدث العروض</p> <p class="dec line-relaxed fs-16">ادخل بريدك لكي يصلك منا احدث العروض</p> <form action="/"> <div class="from-group relative mt-7"> <input type="email" placeholder="البريد الالكتروني" class="round-4 pr-5"> ${renderComponent($$result, "Button", $$Button, { "type": "submit", "aria": "send email", "ClassName": " btn-skew sendEmails round-4 px-9  top-0 left-0" }, { "default": ($$result2) => renderTemplate` 
+ارسل
+` })} </div> </form> </div> </div> </footer>`;
 }, "D:/project/version/2/Astro/presens/src/components/footer/Footer.astro", void 0);
 
-const $$Astro$l = createAstro();
+const $$Astro$m = createAstro();
 const $$Layout = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$l, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$m, $$props, $$slots);
   Astro2.self = $$Layout;
   const { title } = Astro2.props;
   return renderTemplate`<html lang="ar"> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>${title}</title>${renderComponent($$result, "Font", $$Font, {})}${renderHead()}</head> <body> ${renderComponent($$result, "Header", $$Header, {})} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", $$Footer, {})}  </body> </html>`;
 }, "D:/project/version/2/Astro/presens/src/layouts/Layout.astro", void 0);
 
-const $$Astro$k = createAstro();
-const $$FormGroup = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$k, $$props, $$slots);
-  Astro2.self = $$FormGroup;
-  const { title, name, type } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="formGroup relative mb-7"> <input${addAttribute(type, "type")}${addAttribute(name, "name")}${addAttribute(name, "id")} class="round-4 pr-5" required> <label${addAttribute(name, "for")} class="absolute top-50 right-5">${title}</label> </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/ui/FormGroup.astro", void 0);
-
-const $$Astro$j = createAstro();
-const $$LoginInForm = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$j, $$props, $$slots);
-  Astro2.self = $$LoginInForm;
-  return renderTemplate`${maybeRenderHead()}<div class="signIn Form" id="SignIn" style="display: none;"> <form action=""> <h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل الدخول</h1> ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "email", "name": "userEmailLogin", "title": "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "password", "name": "userPasswordLogin", "title": "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631" })} ${renderComponent($$result, "Button", $$Button, { "type": "submit", "aria": "sign in", "ClassName": "mt-8 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto" }, { "default": ($$result2) => renderTemplate`
-تسجيل الدخول
-` })} <p class="text-center mt-6 fs-14 changeResponsive">
-ليس لديك حساب؟ <a href="#SignUp" class="fw-800 signInBtn"> أنشئ حسابك</a> </p> </form> </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/Auth/LoginInForm.astro", void 0);
-
-const $$Astro$i = createAstro();
-const $$SignUpForm = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$i, $$props, $$slots);
-  Astro2.self = $$SignUpForm;
-  return renderTemplate`${maybeRenderHead()}<div class="signUp Form pt-14 " id="SignUp"> <form action=""> <h1 class="text-center fs-r-30 fw-800 mb-6 line-relaxed">أنشئ حسابك</h1> ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "text", "name": "userName", "title": "\u0627\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0643\u0627\u0645\u0644" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "email", "name": "userEmail", "title": "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "number", "name": "userPhone", "title": "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "text", "name": "adders", "title": "\u0627\u0644\u0639\u0646\u0648\u0627\u0646 " })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "password", "name": "userPassword", "title": "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631" })} ${renderComponent($$result, "Button", $$Button, { "type": "submit", "aria": "sign in", "ClassName": "mt-5 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto" }, { "default": ($$result2) => renderTemplate`
-التسجيل
-` })} <p class="text-center mt-6 fs-14 changeResponsive">
-هل لديك حساب؟ <a href="#SignIn" class="fw-800 signUpBtn">تسجيل الدخول</a> </p> </form> </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/Auth/SignUpForm.astro", void 0);
-
-const $$Astro$h = createAstro();
-const $$ToggleText = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$h, $$props, $$slots);
-  Astro2.self = $$ToggleText;
-  const { title, des, BtnName, ClassNames, id, path } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div${addAttribute(`togglePanel ${ClassNames} `, "class")}> <h1 class="fs-r-36 fw-800 line-relaxed"> ${title} </h1> <p class="fw-500 line-relaxed py-6 px-14">${des}</p> ${renderComponent($$result, "Button", $$Button, { "type": "button", "ClassName": "mt-5 btn-popup px-10 py-5 round-6 fs-18 ", "aria": BtnName, "id": id }, { "default": ($$result2) => renderTemplate` <a${addAttribute(path, "href")}>${BtnName}</a> ` })} </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/Auth/ToggleText.astro", void 0);
-
-const $$Astro$g = createAstro();
-const $$AuthText = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$g, $$props, $$slots);
-  Astro2.self = $$AuthText;
-  return renderTemplate`${maybeRenderHead()}<div class="toggle absolute right-0"> ${renderComponent($$result, "ToggleText", $$ToggleText, { "title": `\u0627\u0646\u0636\u0645 \u0627\u0644\u064A\u0646\u0627`, "des": "\u0646\u062D\u0646 \u0646\u0642\u062F\u0645 \u0644\u0643 \u0627\u062D\u062F\u062B \u0645\u0646\u062A\u062C\u0627\u062A \u0627\u0644\u0647\u062F\u0627\u064A\u0627 \u0627\u0644\u062A\u064A \u062A\u062A\u0646\u0627\u0633\u0628 \u0645\u0639 \u062C\u0645\u064A\u0639 \u0627\u0644\u0645\u0646\u0627\u0633\u0628\u0627\u062A \u0628\u0627\u0641\u0636\u0644 \u0627\u0644\u0627\u0633\u0639\u0627\u0631", "BtnName": "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644", "ClassNames": "toggleLeft active text-center", "id": "Login", "path": "#SignIn" })} <!-- right --> ${renderComponent($$result, "ToggleText", $$ToggleText, { "title": "\u0645\u0631\u062D\u0628\u0627 \u0628\u0639\u0648\u062F\u062A\u0643", "des": "\u0646\u062D\u0646 \u0646\u0642\u062F\u0645 \u0644\u0643 \u0627\u062D\u062F\u062B \u0645\u0646\u062A\u062C\u0627\u062A \u0627\u0644\u0647\u062F\u0627\u064A\u0627 \u0627\u0644\u062A\u064A \u062A\u062A\u0646\u0627\u0633\u0628 \u0645\u0639 \u062C\u0645\u064A\u0639 \u0627\u0644\u0645\u0646\u0627\u0633\u0628\u0627\u062A \u0628\u0627\u0641\u0636\u0644 \u0627\u0644\u0627\u0633\u0639\u0627\u0631", "BtnName": "\u0627\u0646\u0636\u0645 \u0627\u0644\u064A\u0646\u0627", "ClassNames": "toggleRight text-center", "id": "Register", "path": "#SignUp" })} </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/Auth/AuthText.astro", void 0);
-
-const $$Astro$f = createAstro();
-const $$SlideAuth = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$f, $$props, $$slots);
-  Astro2.self = $$SlideAuth;
-  return renderTemplate`${maybeRenderHead()}<div class="container d-flex items-start justify-center  mt-14 AuthMain"> <section class="slideAuth relative mx-auto"> <div class="d-flex items-start justify-between overflow-hidden" id="container"> ${renderComponent($$result, "LoginInForm", $$LoginInForm, {})} ${renderComponent($$result, "SignUp", $$SignUpForm, {})} ${renderComponent($$result, "AuthText", $$AuthText, {})} </div> </section> </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/Auth/SlideAuth.astro", void 0);
-
-const bgImg = new Proxy({"src":"/assets/images/gifts-BUF_XeJj.png","width":450,"height":450,"format":"png"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "D:/project/version/2/Astro/presens/src/assets/images/gifts.png";
-							}
-							globalThis.astroAsset.referencedImages.add("D:/project/version/2/Astro/presens/src/assets/images/gifts.png");
-							return target[name];
-						}
-					});
-
-const $$Astro$e = createAstro();
-const $$Auth = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$e, $$props, $$slots);
-  Astro2.self = $$Auth;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | register" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="relative Main"> <div class="imgContainer absolute"> ${renderComponent($$result2, "Image", $$Image, { "src": bgImg, "alt": `bg`, "class": `img-cover`, "loading": "eager" })} </div> ${renderComponent($$result2, "SlideAuth", $$SlideAuth, {})} </main>  ` })}`;
-}, "D:/project/version/2/Astro/presens/src/pages/Auth.astro", void 0);
-
-const $$file$6 = "D:/project/version/2/Astro/presens/src/pages/Auth.astro";
-const $$url$6 = "/Auth.html";
-
-const Auth = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$Auth,
-	file: $$file$6,
-	url: $$url$6
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const $$Astro$d = createAstro();
-const $$Cart = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$d, $$props, $$slots);
-  Astro2.self = $$Cart;
-  return renderTemplate``;
-}, "D:/project/version/2/Astro/presens/src/pages/cart.astro", void 0);
-
-const $$file$5 = "D:/project/version/2/Astro/presens/src/pages/cart.astro";
-const $$url$5 = "/cart.html";
-
-const cart = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$Cart,
-	file: $$file$5,
-	url: $$url$5
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const $$Astro$c = createAstro();
+const $$Astro$l = createAstro();
 const $$Breadcrumb = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$c, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$l, $$props, $$slots);
   Astro2.self = $$Breadcrumb;
   const { linkPage, defPage, path, isCrumb } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<section class="breadcrumb d-flex items-center justify-center relative overflow-hidden"> <div class="img_Container absolute"></div> <div class="container"> <h1 class="title capitalize pb-5 text-center fs-r-36 fw-700 line-normal"> ${linkPage} ${isCrumb ? null : renderTemplate`<span id="userName"></span>`} </h1> ${!isCrumb && renderTemplate`<ul class="d-flex items-center justify-center relative"> <li class="linkPage">${linkPage}</li> <li class="separator"></li> <li class="defPage "> <a${addAttribute(path, "href")} class=""> ${defPage} </a> </li> </ul>`} </div> </section>`;
+  return renderTemplate`${maybeRenderHead()}<section class="breadcrumb relative overflow-hidden"> <div class="img_Container absolute"></div> <div class="container"> <h1 class="title capitalize pb-5 text-center fs-r-36 fw-700 line-normal"> ${linkPage} ${isCrumb ? null : renderTemplate`<span id="userName"></span>`} </h1> ${!isCrumb && renderTemplate`<ul class="d-flex items-center  relative"> <li class="defPage "> <a${addAttribute(path, "href")} class=""> ${defPage} </a> </li> <li class="separator"></li> <li class="linkPage">${linkPage}</li> </ul>`} </div> </section>`;
 }, "D:/project/version/2/Astro/presens/src/components/ui/breadcrumb.astro", void 0);
-
-const $$Astro$b = createAstro();
-const $$MainHeading = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$b, $$props, $$slots);
-  Astro2.self = $$MainHeading;
-  const { title } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="mainHeading text-center"> <h2 class="fs-48 fw-700 d-inline-block relative ">${title}</h2> </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/ui/mainHeading.astro", void 0);
-
-const $$Astro$a = createAstro();
-const $$Card = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$a, $$props, $$slots);
-  Astro2.self = $$Card;
-  const { title, des, img, place, price, btnText, path } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<a${addAttribute(path, "href")}> <div class="card round-8"> <div class="top mx-auto"> ${renderComponent($$result, "Image", $$Image, { "src": img, "alt": `img for product`, "format": "webp", "quality": 70, "class": `img-cover` })} </div> <div class="body"> <div class="pb-5 d-flex items-start justify-between"> <h3 class="fw-700 fs-20">${title}</h3> <p class="price pb-5 fw-700 fs-28"> ${price} </p> </div> <p class="des fs-18 pb-6 fw-700 line-normal">${des}</p> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": " \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644", "ClassName": "btn-popup booking-btn mb-1 py-3 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500" }, { "default": ($$result2) => renderTemplate`${btnText}` })} </div> <!-- end --> </div> </a>`;
-}, "D:/project/version/2/Astro/presens/src/components/Card.astro", void 0);
-
-const $$Astro$9 = createAstro();
-const $$Row = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
-  Astro2.self = $$Row;
-  const { isBooking } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="row gap-row-1 gap-x-12"> ${CardData.map((card) => renderTemplate`<div class="col-3-lg col-6-md col-12-sm"> ${renderComponent($$result, "Card", $$Card, { "title": card.title, "img": card.img, "des": card.des, "place": card.place, "price": card.price, "btnText": isBooking ? "  \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644" : " \u0627\u0636\u0641 \u0644\u0644\u0633\u0644\u0629", "path": isBooking ? "produtsDetails.html" : "detailsTouristView.html" })} </div>`)} </div>`;
-}, "D:/project/version/2/Astro/presens/src/components/ui/Row.astro", void 0);
-
-const $$Astro$8 = createAstro();
-const $$LastProduct = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
-  Astro2.self = $$LastProduct;
-  const { title } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<section class="LastProduct"> ${renderComponent($$result, "MainHeading", $$MainHeading, { "title": title })} <div class="container"> ${renderComponent($$result, "Row", $$Row, { "isBooking": true })} </div> </section>`;
-}, "D:/project/version/2/Astro/presens/src/components/home/LastProduct.astro", void 0);
-
-const $$Astro$7 = createAstro();
-const $$Categories = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
-  Astro2.self = $$Categories;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0639\u064A\u062F \u0627\u0644\u062D\u0628 " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": "\u0639\u064A\u062F \u0627\u0644\u062D\u0628 ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0645\u0646\u062A\u062C\u0627\u062A \u0639\u064A\u062F \u0627\u0644\u062D\u0628  " })} </main> ` })}`;
-}, "D:/project/version/2/Astro/presens/src/pages/Categories.astro", void 0);
-
-const $$file$4 = "D:/project/version/2/Astro/presens/src/pages/Categories.astro";
-const $$url$4 = "/Categories.html";
-
-const Categories = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$Categories,
-	file: $$file$4,
-	url: $$url$4
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const $$Astro$6 = createAstro();
-const $$Contact = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
-  Astro2.self = $$Contact;
-  return renderTemplate`${maybeRenderHead()}<section class="contact"> ${renderComponent($$result, "MainHeading", $$MainHeading, { "title": "\u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0627\u0646\u0627" })} <div class="container"> <form action="" class="round-6 mx-auto"> ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "text", "title": "\u0627\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0643\u0627\u0645\u0644", "name": "userName" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "email", "title": " \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0643\u062A\u0631\u0648\u0646\u064A", "name": "userEmail" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "number", "title": " \u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641 ", "name": "userPhone" })} <div class="formGroup relative mb-7"> <textarea name="UserMassage" id="massage"></textarea> <label for="massage" class="absolute top-50 right-5">رسالتك</label> </div> <div class="d-flex items-center justify-center mx-auto"> ${renderComponent($$result, "Button", $$Button, { "type": `submit`, "aria": "contact us", "ClassName": "btn-popup fs-18 fw-800 py-4 px-14 round-6" }, { "default": ($$result2) => renderTemplate`
-ارسال
-` })} </div> </form> </div> </section>`;
-}, "D:/project/version/2/Astro/presens/src/components/ContactUs/contact.astro", void 0);
-
-const $$Astro$5 = createAstro();
-const $$ContactUs = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
-  Astro2.self = $$ContactUs;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0639\u064A\u062F \u0627\u0644\u062D\u0628 " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": " \u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0627\u0646\u0627 ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "Contact", $$Contact, {})} </main> ` })}`;
-}, "D:/project/version/2/Astro/presens/src/pages/ContactUs.astro", void 0);
-
-const $$file$3 = "D:/project/version/2/Astro/presens/src/pages/ContactUs.astro";
-const $$url$3 = "/ContactUs.html";
-
-const ContactUs = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$ContactUs,
-	file: $$file$3,
-	url: $$url$3
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const $$Astro$4 = createAstro();
-const $$Product = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
-  Astro2.self = $$Product;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": "\u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0627\u062D\u062F\u062B \u0627\u0644\u0639\u0631\u0648\u0636" })} </main> ` })}`;
-}, "D:/project/version/2/Astro/presens/src/pages/product.astro", void 0);
-
-const $$file$2 = "D:/project/version/2/Astro/presens/src/pages/product.astro";
-const $$url$2 = "/product.html";
-
-const product = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$Product,
-	file: $$file$2,
-	url: $$url$2
-}, Symbol.toStringTag, { value: 'Module' }));
 
 const Img1 = new Proxy({"src":"/assets/images/pro1-CU2DzlDO.png","width":450,"height":450,"format":"png"}, {
 						get(target, name, receiver) {
@@ -694,9 +512,141 @@ const Img1 = new Proxy({"src":"/assets/images/pro1-CU2DzlDO.png","width":450,"he
 						}
 					});
 
-const $$Astro$3 = createAstro();
+const $$Astro$k = createAstro();
+const $$CartSection = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$k, $$props, $$slots);
+  Astro2.self = $$CartSection;
+  return renderTemplate`${maybeRenderHead()}<section class="cart"> <div class="container"> <div class="row items-start"> <!-- right side --> <div class="col-5-lg col-12-md col-12-sm"> <!-- start right --> <div class="price-box round-8 relative mx-6"> <div class="box-price d-flex items-center justify-between py-10 px-6"> <!-- itemsNumber --> <p class="itemsNumber fs-18 fw-500">1 منتج</p> <p class="total fs-18 fw-500">1800 ر.س</p> <!-- totlal  --> </div> <hr> <!--  --> <div class="box-price d-flex items-center justify-between py-10 px-6"> <!-- itemsNumber --> <p class="fs-24 fw-700">الاجمالي</p> <p class="total itemsNumber fs-24 fw-700">1800 ر.س</p> <!-- totlal  --> </div> <hr> <div class="d-flex items-center justify-center mx-auto py-10 px-6"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "\u0627\u062F\u0641\u0639 \u0627\u0644\u0627\u0646", "ClassName": "btn-skew round-6" }, { "default": ($$result2) => renderTemplate` <a href="#!" class="px-14 py-5 "> ادفع الان</a> ` })} </div> <!--  --> </div> <!-- end right --> </div> <!-- left side --> <div class="col-7-lg col-12-md col-12-sm"> <!-- start -left --> <div class="pro-box d-flex items-center justify-between round-8 py-10 px-6 relative"> <!-- img pro --> <div class="pro-details d-flex items-center"> <div class="img-pro"> ${renderComponent($$result, "Image", $$Image, { "src": Img1, "alt": "img", "format": "webp", "quality": 70 })} </div> <p class="name fs-20 fw-700">ساعة اسمارت</p> </div> <!-- quantiy --> <div class="form-group relative"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute right-0 top-50 more" }, { "default": ($$result2) => renderTemplate`
++
+` })} <input type="text" id="quantiy" name="quantiy" value="1" class="text-center round-6"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute left-0 top-50 mins" }, { "default": ($$result2) => renderTemplate`
+-
+` })} </div> <!-- prices --> <div class="total-prices"> <span class="price fs-30 fw-700">1800</span> <span class="price-ks">ر.س</span> </div> <!-- button delete --> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "delete", "ClassName": "absolute delete-btn top-0 left-0" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Icon", $$Icon, { "name": `delete` })} ` })} </div> <!-- end left side --> <!-- start -left --> <div class="pro-box d-flex items-center justify-between round-8 py-10 px-6 relative"> <!-- img pro --> <div class="pro-details d-flex items-center"> <div class="img-pro"> ${renderComponent($$result, "Image", $$Image, { "src": Img1, "alt": "img", "format": "webp", "quality": 70 })} </div> <p class="name fs-20 fw-700">ساعة اسمارت</p> </div> <!-- quantiy --> <div class="form-group relative"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute right-0 top-50 more" }, { "default": ($$result2) => renderTemplate`
++
+` })} <input type="text" id="quantiy" name="quantiy" value="1" class="text-center round-6"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute left-0 top-50 mins" }, { "default": ($$result2) => renderTemplate`
+-
+` })} </div> <!-- prices --> <div class="total-prices"> <span class="price fs-30 fw-700">1800</span> <span class="price-ks">ر.س</span> </div> <!-- button delete --> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "delete", "ClassName": "absolute delete-btn top-0 left-0" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Icon", $$Icon, { "name": `delete` })} ` })} </div> <!-- end left side --> </div> <!-- end row --> </div> </div> </section>`;
+}, "D:/project/version/2/Astro/presens/src/components/cart/cartSection.astro", void 0);
+
+const $$Astro$j = createAstro();
+const $$Cart = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$j, $$props, $$slots);
+  Astro2.self = $$Cart;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius |  \u0627\u0644\u0633\u0644\u0629 " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": " \u0627\u0644\u0633\u0644\u0629 ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "CartSection", $$CartSection, {})} </main> ` })}`;
+}, "D:/project/version/2/Astro/presens/src/pages/cart.astro", void 0);
+
+const $$file$7 = "D:/project/version/2/Astro/presens/src/pages/cart.astro";
+const $$url$7 = "/cart.html";
+
+const cart = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: $$Cart,
+	file: $$file$7,
+	url: $$url$7
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$i = createAstro();
+const $$MainHeading = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$i, $$props, $$slots);
+  Astro2.self = $$MainHeading;
+  const { title } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div class="mainHeading text-center"> <h2 class="fs-48 fw-700 d-inline-block relative ">${title}</h2> </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/ui/mainHeading.astro", void 0);
+
+const $$Astro$h = createAstro();
+const $$Card = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$h, $$props, $$slots);
+  Astro2.self = $$Card;
+  const { title, des, img, place, price, btnText, path } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<a${addAttribute(path, "href")}> <div class="card round-8 d-flex"> <div class="top mx-auto"> ${renderComponent($$result, "Image", $$Image, { "src": img, "alt": `img for product`, "format": "webp", "quality": 70, "class": `img-cover` })} </div> <div class="body mr-1"> <div class="pb-5"> <h3 class="fw-700 pb-1 fs-20">${title}</h3> <p class="price  fw-700 fs-28"> ${price} </p> </div> <p class="des fs-16 pb-6 fw-500 line-normal">${des}</p> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": " \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644", "ClassName": "btn-skew booking-btn mb-1 py-3 round-6 mx-auto d-flex items-center justify-center fs-18 fw-500" }, { "default": ($$result2) => renderTemplate`${btnText}` })} </div> <!-- end --> </div> </a>`;
+}, "D:/project/version/2/Astro/presens/src/components/Card.astro", void 0);
+
+const $$Astro$g = createAstro();
+const $$Row = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$g, $$props, $$slots);
+  Astro2.self = $$Row;
+  const { isBooking } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div class="row gap-row-1 gap-x-12"> ${CardData.map((card) => renderTemplate`<div class="col-3-lg col-6-md col-12-sm"> ${renderComponent($$result, "Card", $$Card, { "title": card.title, "img": card.img, "des": card.des, "place": card.place, "price": card.price, "btnText": isBooking ? "  \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644" : " \u0627\u0636\u0641 \u0644\u0644\u0633\u0644\u0629", "path": isBooking ? "produtsDetails.html" : "detailsTouristView.html" })} </div>`)} </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/ui/Row.astro", void 0);
+
+const $$Astro$f = createAstro();
+const $$LastProduct = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$f, $$props, $$slots);
+  Astro2.self = $$LastProduct;
+  const { title } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<section class="LastProduct"> ${renderComponent($$result, "MainHeading", $$MainHeading, { "title": title })} <div class="container"> ${renderComponent($$result, "Row", $$Row, { "isBooking": true })} </div> </section>`;
+}, "D:/project/version/2/Astro/presens/src/components/home/LastProduct.astro", void 0);
+
+const $$Astro$e = createAstro();
+const $$Categories = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$e, $$props, $$slots);
+  Astro2.self = $$Categories;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0639\u064A\u062F \u0627\u0644\u062D\u0628 " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": "\u0639\u064A\u062F \u0627\u0644\u062D\u0628 ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0645\u0646\u062A\u062C\u0627\u062A \u0639\u064A\u062F \u0627\u0644\u062D\u0628  " })} </main> ` })}`;
+}, "D:/project/version/2/Astro/presens/src/pages/Categories.astro", void 0);
+
+const $$file$6 = "D:/project/version/2/Astro/presens/src/pages/Categories.astro";
+const $$url$6 = "/Categories.html";
+
+const Categories = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: $$Categories,
+	file: $$file$6,
+	url: $$url$6
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$d = createAstro();
+const $$FormGroup = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$d, $$props, $$slots);
+  Astro2.self = $$FormGroup;
+  const { title, name, type } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div class="formGroup relative mb-7"> <input${addAttribute(type, "type")}${addAttribute(name, "name")}${addAttribute(name, "id")} class="round-4 pr-5" required> <label${addAttribute(name, "for")} class="absolute top-50 right-5">${title}</label> </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/ui/FormGroup.astro", void 0);
+
+const $$Astro$c = createAstro();
+const $$Contact = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$c, $$props, $$slots);
+  Astro2.self = $$Contact;
+  return renderTemplate`${maybeRenderHead()}<section class="contact"> ${renderComponent($$result, "MainHeading", $$MainHeading, { "title": "\u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0627\u0646\u0627" })} <div class="container"> <form action="" class="round-6 mx-auto"> ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "text", "title": "\u0627\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0643\u0627\u0645\u0644", "name": "userName" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "email", "title": " \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0643\u062A\u0631\u0648\u0646\u064A", "name": "userEmail" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "number", "title": " \u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641 ", "name": "userPhone" })} <div class="formGroup relative mb-7"> <textarea name="UserMassage" id="massage"></textarea> <label for="massage" class="absolute top-50 right-5">رسالتك</label> </div> <div class="d-flex items-center justify-center mx-auto"> ${renderComponent($$result, "Button", $$Button, { "type": `submit`, "aria": "contact us", "ClassName": "btn-skew fs-18 fw-800 py-4 px-14 round-6" }, { "default": ($$result2) => renderTemplate`
+ارسال
+` })} </div> </form> </div> </section>`;
+}, "D:/project/version/2/Astro/presens/src/components/ContactUs/contact.astro", void 0);
+
+const $$Astro$b = createAstro();
+const $$ContactUs = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$b, $$props, $$slots);
+  Astro2.self = $$ContactUs;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0639\u064A\u062F \u0627\u0644\u062D\u0628 " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": " \u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0627\u0646\u0627 ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "Contact", $$Contact, {})} </main> ` })}`;
+}, "D:/project/version/2/Astro/presens/src/pages/ContactUs.astro", void 0);
+
+const $$file$5 = "D:/project/version/2/Astro/presens/src/pages/ContactUs.astro";
+const $$url$5 = "/ContactUs.html";
+
+const ContactUs = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: $$ContactUs,
+	file: $$file$5,
+	url: $$url$5
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$a = createAstro();
+const $$Product = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$a, $$props, $$slots);
+  Astro2.self = $$Product;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": " \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "linkPage": "\u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A ", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0627\u062D\u062F\u062B \u0627\u0644\u0639\u0631\u0648\u0636" })} </main> ` })}`;
+}, "D:/project/version/2/Astro/presens/src/pages/product.astro", void 0);
+
+const $$file$4 = "D:/project/version/2/Astro/presens/src/pages/product.astro";
+const $$url$4 = "/product.html";
+
+const product = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: $$Product,
+	file: $$file$4,
+	url: $$url$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$9 = createAstro();
 const $$Details2 = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
   Astro2.self = $$Details2;
   return renderTemplate`${maybeRenderHead()}<section class="detailsSection"> <div class="container"> <div class="row"> <!-- right-side --> <div class="col-5-lg col-12-md col-12-sm row-right"> <div class="right-side"> <p class="des name fs-48 fw-700 mb-6">ساعة اسمارت</p> <p class="des price fs-36 fw-700 mb-6">
 1800
@@ -704,26 +654,107 @@ const $$Details2 = createComponent(async ($$result, $$props, $$slots) => {
 يعد هاتف Galaxy Note8 بوابتك إلى عالم جديد عند توصيله بهذه المجموعة
             من الأجهزة والواجهات. إنه عالم يتم فيه تجاوز الحدود وكسر الحواجز حتى
             تتمكن من رؤية المزيد ومشاركة المزيد والقيام بالمزيد - دون عناء.
-</p> <div class="mt-14 d-flex items-center"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": " \u0627\u0636\u0641 \u0644\u0644\u0633\u0644\u0629", "ClassName": "btn-popup  round-6" }, { "default": ($$result2) => renderTemplate` <a href="/" class="py-6 px-12 fs-18 fw-700"> اضف للسلة</a> ` })} <div class="form-group relative"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute right-0 top-50 more" }, { "default": ($$result2) => renderTemplate`
+</p> <div class="mt-14 d-flex items-center"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": " \u0627\u0636\u0641 \u0644\u0644\u0633\u0644\u0629", "ClassName": "btn-skew  round-6" }, { "default": ($$result2) => renderTemplate` <a href="/" class="py-6 px-12 fs-18 fw-700"> اضف للسلة</a> ` })} <div class="form-group relative"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute right-0 top-50 more" }, { "default": ($$result2) => renderTemplate`
 +
 ` })} <input type="text" id="quantiy" name="quantiy" value="1" class="text-center"> ${renderComponent($$result, "Button", $$Button, { "type": "button", "aria": "more", "ClassName": "absolute left-0 top-50 mins" }, { "default": ($$result2) => renderTemplate`
 -
 ` })} </div> </div> </div> </div> <!-- left-side --> <div class="col-7-lg col-12-md col-12-sm row-left"> <div class="left-side"> <div class="full-img-container round-6 relative d-flex"> <div class="big-img"> ${renderComponent($$result, "Image", $$Image, { "src": Img$1, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </div> <div class="d-flex items-center allImg"> <div> ${renderComponent($$result, "Image", $$Image, { "src": Img$1, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </div> <div> ${renderComponent($$result, "Image", $$Image, { "src": Img1, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </div> <div> ${renderComponent($$result, "Image", $$Image, { "src": Img$1, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </div> <div> ${renderComponent($$result, "Image", $$Image, { "src": Img1, "alt": `\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0644\u0645`, "quality": 70, "format": "webp", "class": `round-6 mb-5` })} </div> </div> </div> </div> </div> <!-- end row --> </div> </div> </section>`;
 }, "D:/project/version/2/Astro/presens/src/components/detalis/details2.astro", void 0);
 
-const $$Astro$2 = createAstro();
+const $$Astro$8 = createAstro();
 const $$ProdutsDetails = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
   Astro2.self = $$ProdutsDetails;
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "BreadCrumb", $$Breadcrumb, { "defPage": "\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0645\u0646\u062A\u062C", "linkPage": "\u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629", "isCrumb": false, "path": "/" })} ${renderComponent($$result2, "Details2", $$Details2, {})} ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0645\u0646\u062A\u062C\u0627\u062A \u0645\u0634\u0627\u0628\u0647" })} </main>  ` })}`;
 }, "D:/project/version/2/Astro/presens/src/pages/produtsDetails.astro", void 0);
 
-const $$file$1 = "D:/project/version/2/Astro/presens/src/pages/produtsDetails.astro";
-const $$url$1 = "/produtsDetails.html";
+const $$file$3 = "D:/project/version/2/Astro/presens/src/pages/produtsDetails.astro";
+const $$url$3 = "/produtsDetails.html";
 
 const produtsDetails = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	__proto__: null,
 	default: $$ProdutsDetails,
+	file: $$file$3,
+	url: $$url$3
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$7 = createAstro();
+const $$LoginInForm = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
+  Astro2.self = $$LoginInForm;
+  return renderTemplate`${maybeRenderHead()}<div class="signIn Form" id="SignIn"> <form action=""> <h1 class="text-center fs-r-30 fw-800 mb-8 line-relaxed">تسجيل الدخول</h1> ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "email", "name": "userEmailLogin", "title": "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "password", "name": "userPasswordLogin", "title": "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631" })} ${renderComponent($$result, "Button", $$Button, { "type": "submit", "aria": "sign in", "ClassName": "mt-8 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto mt-14" }, { "default": ($$result2) => renderTemplate`
+تسجيل الدخول
+` })} <p class="text-center mt-6 fs-14 changeResponsive">
+ليس لديك حساب؟ <a href="#SignUp" class="fw-800 signInBtn"> أنشئ حسابك</a> </p> </form> </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/Auth/LoginInForm.astro", void 0);
+
+const $$Astro$6 = createAstro();
+const $$SlideAuthLogin = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
+  Astro2.self = $$SlideAuthLogin;
+  return renderTemplate`${maybeRenderHead()}<div class="container d-flex items-start justify-center  mt-14 AuthMain"> <section class="slideAuth relative mx-auto"> <div class=" overflow-hidden" id="container"> ${renderComponent($$result, "LoginInForm", $$LoginInForm, {})} <!-- <SignUp /> --> <!-- <AuthText /> --> </div> </section> </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/Auth/slideAuthLogin.astro", void 0);
+
+const bgImg = new Proxy({"src":"/assets/images/gifts-BUF_XeJj.png","width":450,"height":450,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "D:/project/version/2/Astro/presens/src/assets/images/gifts.png";
+							}
+							globalThis.astroAsset.referencedImages.add("D:/project/version/2/Astro/presens/src/assets/images/gifts.png");
+							return target[name];
+						}
+					});
+
+const $$Astro$5 = createAstro();
+const $$SignIn = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
+  Astro2.self = $$SignIn;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | register" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="relative Main"> <div class="imgContainer absolute"> ${renderComponent($$result2, "Image", $$Image, { "src": bgImg, "alt": `bg`, "class": `img-cover`, "loading": "eager" })} </div> ${renderComponent($$result2, "SlideAuth", $$SlideAuthLogin, {})} </main>  ` })}`;
+}, "D:/project/version/2/Astro/presens/src/pages/signIn.astro", void 0);
+
+const $$file$2 = "D:/project/version/2/Astro/presens/src/pages/signIn.astro";
+const $$url$2 = "/signIn.html";
+
+const signIn = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: $$SignIn,
+	file: $$file$2,
+	url: $$url$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const $$Astro$4 = createAstro();
+const $$SignUpForm = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  Astro2.self = $$SignUpForm;
+  return renderTemplate`${maybeRenderHead()}<div class="signUp Form pt-6" id="SignUp"> <form action=""> <h1 class="text-center fs-r-30 fw-800 mb-6 line-relaxed">أنشئ حسابك</h1> ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "text", "name": "userName", "title": "\u0627\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0643\u0627\u0645\u0644" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "email", "name": "userEmail", "title": "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "number", "name": "userPhone", "title": "\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641" })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "text", "name": "adders", "title": "\u0627\u0644\u0639\u0646\u0648\u0627\u0646 " })} ${renderComponent($$result, "FormGroup", $$FormGroup, { "type": "password", "name": "userPassword", "title": "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631" })} ${renderComponent($$result, "Button", $$Button, { "type": "submit", "aria": "sign in", "ClassName": "mt-5 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto mt-14" }, { "default": ($$result2) => renderTemplate`
+التسجيل
+` })} <p class="text-center mt-6 fs-14 changeResponsive">
+هل لديك حساب؟ <a href="#SignIn" class="fw-800 signUpBtn">تسجيل الدخول</a> </p> </form> </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/Auth/SignUpForm.astro", void 0);
+
+const $$Astro$3 = createAstro();
+const $$SlideAuth = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  Astro2.self = $$SlideAuth;
+  return renderTemplate`${maybeRenderHead()}<div class="container d-flex items-start justify-center  mt-14 AuthMain"> <section class="slideAuth relative mx-auto"> <div class=" overflow-hidden" id="container"> <!-- <LoginInForm /> --> ${renderComponent($$result, "SignUp", $$SignUpForm, {})} <!-- <AuthText /> --> </div> </section> </div>`;
+}, "D:/project/version/2/Astro/presens/src/components/Auth/SlideAuth.astro", void 0);
+
+const $$Astro$2 = createAstro();
+const $$SignUp = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$SignUp;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | register" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="relative Main"> <div class="imgContainer absolute"> ${renderComponent($$result2, "Image", $$Image, { "src": bgImg, "alt": `bg`, "class": `img-cover`, "loading": "eager" })} </div> ${renderComponent($$result2, "SlideAuth", $$SlideAuth, {})} </main>  ` })}`;
+}, "D:/project/version/2/Astro/presens/src/pages/signUp.astro", void 0);
+
+const $$file$1 = "D:/project/version/2/Astro/presens/src/pages/signUp.astro";
+const $$url$1 = "/signUp.html";
+
+const signUp = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: $$SignUp,
 	file: $$file$1,
 	url: $$url$1
 }, Symbol.toStringTag, { value: 'Module' }));
@@ -756,7 +787,7 @@ const $$Astro = createAstro();
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | Home page" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> <!-- hero section --> ${renderComponent($$result2, "Hero", $$Hero, {})} <!-- last product section --> ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0627\u062D\u062F\u062B \u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A" })} <!-- offer product section --> </main> ` })}`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Gift Genius | \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629 " }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> <!-- hero section --> ${renderComponent($$result2, "Hero", $$Hero, {})} <!-- last product section --> ${renderComponent($$result2, "LastProduct", $$LastProduct, { "title": "\u0627\u062D\u062F\u062B \u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A" })} <!-- offer product section --> </main> ` })}`;
 }, "D:/project/version/2/Astro/presens/src/pages/index.astro", void 0);
 
 const $$file = "D:/project/version/2/Astro/presens/src/pages/index.astro";
@@ -769,4 +800,4 @@ const index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 
-export { Auth as A, Categories as C, ContactUs as a, produtsDetails as b, cart as c, index as i, product as p };
+export { Categories as C, ContactUs as a, produtsDetails as b, cart as c, signUp as d, index as i, product as p, signIn as s };

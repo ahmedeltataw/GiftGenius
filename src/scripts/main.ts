@@ -5,9 +5,11 @@ let ListLi = document.querySelectorAll(
 let Header = document.querySelector("header") as HTMLHeadingElement
 let menuBtn = document.querySelector(".icon-nav-base") as HTMLButtonElement;
 let drop1 = document.querySelector("#drop1") as HTMLLIElement;
+
 let drop2 = document.querySelector("#drop2") as HTMLLIElement;
-let dropContent = document.querySelector(".dropdown-content") as HTMLUListElement;
-let dropLi = document.querySelectorAll(".dropdown-content li") as NodeListOf<HTMLLIElement>;
+
+let dropContent = document.querySelector("#drop1 .dropdown-content") as HTMLUListElement;
+let dropLi = document.querySelectorAll("#drop1 .dropdown-content li") as NodeListOf<HTMLLIElement>;
 let dropContent2 = document.querySelector("#drop2 .dropdown-content") as HTMLUListElement;
 let dropLi2 = document.querySelectorAll("#drop2 .dropdown-content li") as NodeListOf<HTMLLIElement>;
 let arrowDropDown = document.getElementById("arrowDropDown") as HTMLElement
@@ -82,6 +84,7 @@ let openMenu = () => {
 let toggleDropdown = (selectDrop:HTMLLIElement , selectDropUi:HTMLUListElement ,selectDropLi:NodeListOf<HTMLLIElement>) => {
   isOpen = !isOpen;
   openDropMenu(isOpen,selectDropUi ,selectDropLi);
+  // console.log(selectDropUi)
   let arrowDrop: any =selectDrop.children[1] 
   arrowDrop.classList.toggle("active")
   if (menuBtn.classList.contains("active")) {
@@ -121,6 +124,7 @@ let openDropMenu = (show: boolean , selectDrop:HTMLUListElement ,selectDropLi:No
 let isOpen = false;
 window.addEventListener("resize", responsiveHeader);
 drop1.addEventListener("click", ()=>toggleDropdown(drop1,dropContent ,dropLi));
+console.log(dropContent)
 drop2.addEventListener("click", ()=>toggleDropdown(drop2,dropContent2 ,dropLi2));
 
 

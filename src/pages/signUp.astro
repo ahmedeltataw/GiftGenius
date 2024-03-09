@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import SlideAuth from "../components/Auth/SlideAuth.astro"
+//style
+import "../styles/scss/pages/Auth.scss";
+import bgImg from "../assets/images/gifts.png";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Gift Genius | register">
+  <main class="relative Main">
+    <div class="imgContainer absolute">
+      <Image src={bgImg} alt={`bg`} class={`img-cover`} loading="eager" />
+    </div>
+    <SlideAuth />
+  </main>
+  <!-- <script src="../scripts/Auth.ts"></script> -->
+</Layout>

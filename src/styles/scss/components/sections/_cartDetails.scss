@@ -1,0 +1,88 @@
+@use "../../helpers/mixin" as *;
+@use "../../helpers/color" as *;
+@use "../../helpers/extend" as *;
+
+.cart {
+    @extend %section;
+    padding-top: 14vh;
+    min-height: 70vh;
+
+    .pro-box {
+        background-color: rgb(218, 218, 218);
+        margin-bottom: 10px;
+        // margin-right: 10px;
+
+        .img-pro {
+            width: 150px;
+        }
+
+        .form-group {
+            input {
+                @include input(35px, 80px, transparent)
+            }
+
+            button {
+                transform: translateY(-50%);
+                background-color: $hover;
+                color: #fff;
+                transition: $t-s;
+
+                &:hover {
+                    background-color: $hover-2;
+                }
+
+                @include cricle(20px);
+                text-align: center;
+
+                &.more {
+                    right: -25px;
+                }
+
+                &.mins {
+                    left: -25px;
+                }
+            }
+        }
+
+        .delete-btn {
+            background-color: rgb(225, 87, 87);
+            border-radius: 0% 100% 100% 0% / 100% 0% 100% 0%;
+            width: 70px;
+            height: 49px;
+            text-align: left;
+
+            svg {
+                width: 24px;
+                margin-right: 28px;
+                margin-top: -8px;
+                color: #ffffff;
+            }
+        }
+
+        .price {
+            color: $hover;
+
+        }
+
+        .price-ks {
+            opacity: .7;
+        }
+    }
+
+    .price-box {
+        background-color: rgb(218, 218, 218);
+
+        // .box-price {}
+        .itemsNumber {
+            color: $hover-1;
+        }
+    }
+
+    hr {
+        opacity: .5;
+    }
+
+    .btn-skew {
+        background-color: $hover-1;
+    }
+}

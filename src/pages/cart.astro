@@ -1,2 +1,18 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import "../styles/scss/pages/Cart.scss";
+import BreadCrumb from "../components/ui/breadcrumb.astro";
+import CartSection from "../components/cart/cartSection.astro"
 ---
+
+<Layout title="Gift Genius |  السلة ">
+  <main>
+    <BreadCrumb
+      defPage=" الصفحة الرئيسية"
+      linkPage=" السلة "
+      isCrumb={false}
+      path="/"
+    />
+    <CartSection/>
+  </main>
+</Layout>

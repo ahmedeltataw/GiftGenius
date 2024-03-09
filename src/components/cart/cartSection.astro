@@ -1,0 +1,149 @@
+---
+import { Image } from "astro:assets";
+
+import img from "../../assets/images/products/pro1.png";
+import Button from "@components/ui/Button.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="cart">
+  <div class="container">
+    <div class="row items-start">
+      <!-- right side -->
+      <div class="col-5-lg col-12-md col-12-sm">
+        <!-- start right -->
+        <div class="price-box round-8 relative mx-6">
+          <div class="box-price d-flex items-center justify-between py-10 px-6">
+            <!-- itemsNumber -->
+            <p class="itemsNumber fs-18 fw-500">1 منتج</p>
+            <p class="total fs-18 fw-500">1800 ر.س</p>
+            <!-- totlal  -->
+          </div>
+          <hr />
+          <!--  -->
+          <div class="box-price d-flex items-center justify-between py-10 px-6">
+            <!-- itemsNumber -->
+            <p class="fs-24 fw-700">الاجمالي</p>
+            <p class="total itemsNumber fs-24 fw-700">1800 ر.س</p>
+            <!-- totlal  -->
+          </div>
+          <hr />
+          <div class="d-flex items-center justify-center mx-auto py-10 px-6">
+            <Button type="button" aria="ادفع الان" ClassName="btn-skew round-6">
+              <a href="#!" class="px-14 py-5 "> ادفع الان</a>
+            </Button>
+          </div>
+          <!--  -->
+        </div>
+        <!-- end right -->
+      </div>
+      <!-- left side -->
+      <div class="col-7-lg col-12-md col-12-sm">
+        <!-- start -left -->
+        <div
+          class="pro-box d-flex items-center justify-between round-8 py-10 px-6 relative"
+        >
+          <!-- img pro -->
+          <div class="pro-details d-flex items-center">
+            <div class="img-pro">
+              <Image src={img} alt={"img"} format="webp" quality={70} />
+            </div>
+            <p class="name fs-20 fw-700">ساعة اسمارت</p>
+          </div>
+
+          <!-- quantiy -->
+          <div class="form-group relative">
+            <Button
+              type="button"
+              aria="more"
+              ClassName="absolute right-0 top-50 more"
+            >
+              +
+            </Button>
+            <input
+              type="text"
+              id="quantiy"
+              name="quantiy"
+              value="1"
+              class="text-center round-6"
+            />
+            <Button
+              type="button"
+              aria="more"
+              ClassName="absolute left-0 top-50 mins"
+            >
+              -
+            </Button>
+          </div>
+          <!-- prices -->
+          <div class="total-prices">
+            <span class="price fs-30 fw-700">1800</span>
+            <span class="price-ks">ر.س</span>
+          </div>
+          <!-- button delete -->
+          <Button
+            type="button"
+            aria="delete"
+            ClassName="absolute delete-btn top-0 left-0"
+          >
+            <Icon name={`delete`} />
+          </Button>
+        </div>
+        <!-- end left side -->
+        <!-- start -left -->
+        <div
+          class="pro-box d-flex items-center justify-between round-8 py-10 px-6 relative"
+        >
+          <!-- img pro -->
+          <div class="pro-details d-flex items-center">
+            <div class="img-pro">
+              <Image src={img} alt={"img"} format="webp" quality={70} />
+            </div>
+            <p class="name fs-20 fw-700">ساعة اسمارت</p>
+          </div>
+
+          <!-- quantiy -->
+          <div class="form-group relative">
+            <Button
+              type="button"
+              aria="more"
+              ClassName="absolute right-0 top-50 more"
+            >
+              +
+            </Button>
+            <input
+              type="text"
+              id="quantiy"
+              name="quantiy"
+              value="1"
+              class="text-center round-6"
+            />
+            <Button
+              type="button"
+              aria="more"
+              ClassName="absolute left-0 top-50 mins"
+            >
+              -
+            </Button>
+          </div>
+          <!-- prices -->
+          <div class="total-prices">
+            <span class="price fs-30 fw-700">1800</span>
+            <span class="price-ks">ر.س</span>
+          </div>
+          <!-- button delete -->
+          <Button
+            type="button"
+            aria="delete"
+            ClassName="absolute delete-btn top-0 left-0"
+          >
+            <Icon name={`delete`} />
+          </Button>
+        </div>
+        <!-- end left side -->
+      </div>
+
+      <!-- end row -->
+    </div>
+  </div>
+</section>

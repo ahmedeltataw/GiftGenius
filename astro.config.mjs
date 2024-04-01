@@ -11,7 +11,7 @@ export default defineConfig({
     inlineStylesheets: 'never',
     format: 'file',
     base: '/',
-    // assetsPrefix: '/dist/'
+    assetsPrefix: './'
   },
   image: {
     service: squooshImageService(),

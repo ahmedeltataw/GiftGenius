@@ -1,0 +1,88 @@
+@use "../helpers/color" as *;
+
+.Chat {
+    min-height: 100vh;
+}
+
+.Chat-model {
+    // background-color: red;
+    display: grid;
+    place-content: center;
+    min-height: 80vh;
+    margin-top: 3vh;
+
+
+    .body-chat {
+        gap: 15px;
+        flex-wrap: wrap;
+        // width: 100%;
+
+
+        .form-select {
+
+            width: 450px;
+            height: 48px;
+            max-width: 100%;
+
+            @media(max-width:478px) {
+                width: 300px;
+                max-width: 100%;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                border: 6px solid transparent;
+                top: 0;
+                left: 0;
+                border-top-color: $text;
+                border-radius: 2px;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 10px;
+
+            }
+
+            select {
+                width: 100%;
+                height: 100%;
+                background-color: transparent;
+
+                border: 1px solid $text;
+                outline: 0;
+                -webkit-appearance: none;
+
+
+
+                option {
+                    &:checked {
+                        color: $hover;
+                    }
+                }
+
+                &:focus {
+                    border-color: $hover;
+
+                }
+            }
+        }
+
+    }
+
+    .respondMassage {
+        color: $text;
+
+        ul {
+
+            li {
+                list-style-type: decimal;
+
+            }
+        }
+
+    }
+}
+
+aside {
+    margin-top: 15vh;
+}

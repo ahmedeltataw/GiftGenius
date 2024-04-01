@@ -27,7 +27,7 @@ let dropLi4 = document.querySelectorAll("#drop4 .dropdown-content li") as NodeLi
 let dropContent5 = document.querySelector("#drop5 .dropdown-content") as HTMLUListElement;
 let dropLi5 = document.querySelectorAll("#drop5 .dropdown-content li") as NodeListOf<HTMLLIElement>;
 
-let arrowDropDown = document.getElementById("arrowDropDown") as HTMLElement
+// let arrowDropDown = document.getElementById("arrowDropDown") as HTMLElement
 //function
 // *****responsive header *********
 let responsiveHeader = () => {
@@ -96,54 +96,106 @@ let openMenu = () => {
 };
 
 //(((((((((open  drop down )))))))))
-let toggleDropdown = (selectDrop:HTMLLIElement , selectDropUi:HTMLUListElement ,selectDropLi:NodeListOf<HTMLLIElement>) => {
-  isOpen = !isOpen;
-  openDropMenu(isOpen,selectDropUi ,selectDropLi);
-  // console.log(selectDropUi)
-  let arrowDrop: any =selectDrop.children[1] 
+// let isOpen = false;
+// let toggleDropdown = (selectDrop: HTMLLIElement, selectDropUi: HTMLUListElement, selectDropLi: NodeListOf<HTMLLIElement>) => {
+//   isOpen = !isOpen;
+//   openDropMenu(isOpen, selectDropUi, selectDropLi);
+//   let arrowDrop: any = selectDrop.children[1]
+//   // List.style.overflowY='scroll'
+//   arrowDrop.classList.toggle("active")
+//   if (menuBtn.classList.contains("active")) {
+//     if (arrowDrop.classList.contains('active')) {
+
+//       let margin = calcMaxHeight(selectDropLi)
+//       selectDrop.style.marginBottom = `${margin}px`;
+//       List.style.height = `${parseInt(List.style.height) + margin}px`
+
+//     } else {
+//       let margin = calcMaxHeight(selectDropLi)
+
+//       setTimeout(() => {
+//         List.style.height = `${parseInt(List.style.height) - margin}px`
+//         selectDrop.style.marginBottom = `0`;
+//       }, 400)
+//     }
+
+//   }
+//   return ;
+
+// }
+// let openDropMenu = (show: boolean, selectDrop: HTMLUListElement, selectDropLi: NodeListOf<HTMLLIElement>) => {
+
+//   if (show) {
+//     selectDrop.classList.add("open")
+//     setTimeout(() => {
+//       animationSlide('down', selectDropLi, selectDrop)
+//     })
+//   } else {
+//     animationSlide('up', selectDropLi, selectDrop)
+//     setTimeout(() => {
+//       selectDrop.classList.remove("open")
+//     }, 480)
+//   }
+
+// }
+let openDropMenu = (selectDrop: HTMLUListElement, selectDropLi: NodeListOf<HTMLLIElement>) => {
+  selectDrop.classList.add("open");
+  animationSlide('down', selectDropLi, selectDrop);
+}
+
+let closeDropMenu = (selectDrop: HTMLUListElement, selectDropLi: NodeListOf<HTMLLIElement>) => {
+  animationSlide('up', selectDropLi, selectDrop);
+  setTimeout(() => {
+      selectDrop.classList.remove("open");
+  }, 480);
+}
+
+let toggleDropdown = (selectDrop: HTMLLIElement, selectDropUi: HTMLUListElement, selectDropLi: NodeListOf<HTMLLIElement>) => {
+  if (selectDropUi.classList.contains("open")) {
+      closeDropMenu(selectDropUi, selectDropLi);
+      return;
+  }
+  let arrowDrop: any = selectDrop.children[1]
+  // List.style.overflowY='scroll'
   arrowDrop.classList.toggle("active")
   if (menuBtn.classList.contains("active")) {
-    if (arrowDropDown.classList.contains('active') ) {
-      let margin = calcMaxHeight(dropLi)
+    if (arrowDrop.classList.contains('active')) {
+
+      let margin = calcMaxHeight(selectDropLi)
       selectDrop.style.marginBottom = `${margin}px`;
       List.style.height = `${parseInt(List.style.height) + margin}px`
-      
-    }else{
-      let margin = calcMaxHeight(dropLi)
-      
-    setTimeout(() => {
-      List.style.height = `${parseInt(List.style.height) - margin}px`
-      selectDrop.style.marginBottom = `0`;
-    }, 450)
-    }
-    
-  } 
-}
-let openDropMenu = (show: boolean , selectDrop:HTMLUListElement ,selectDropLi:NodeListOf<HTMLLIElement>) => {
 
-  if (show) {
-    selectDrop.classList.add("open")
-    setTimeout(() => {
-      animationSlide('down', selectDropLi, selectDrop)
-    })
-  } else {
-    animationSlide('up', selectDropLi, selectDrop)
-    setTimeout(() => {
-      selectDrop.classList.remove("open")
-    }, 480)
+    } else {
+      let margin = calcMaxHeight(selectDropLi)
+
+      setTimeout(() => {
+        List.style.height = `${parseInt(List.style.height) - margin}px`
+        selectDrop.style.marginBottom = `0`;
+      }, 400)
+    }
+
   }
 
+  // Close any other open dropdowns
+  document.querySelectorAll('.dropdown-content.open').forEach((dropdown) => {
+      closeDropMenu(dropdown as HTMLUListElement, dropdown.querySelectorAll('.dropdown-content > li'));
+      dropdown.classList.remove("open");
+      // arrowDrop.classList.remove("active")
+  });
+
+  openDropMenu(selectDropUi, selectDropLi);
+  selectDropUi.classList.add("open");
+  
 }
-
 //(((((((((addEventListener )))))))))
-let isOpen = false;
-window.addEventListener("resize", responsiveHeader);
-drop1.addEventListener("click", ()=>toggleDropdown(drop1,dropContent ,dropLi));
 
-drop2.addEventListener("click", ()=>toggleDropdown(drop2,dropContent2 ,dropLi2));
-drop3.addEventListener("click", ()=>toggleDropdown(drop3,dropContent3 ,dropLi3));
-drop4.addEventListener("click", ()=>toggleDropdown(drop3,dropContent4 ,dropLi4));
-drop5.addEventListener("click", ()=>toggleDropdown(drop3,dropContent5 ,dropLi5));
+window.addEventListener("resize", responsiveHeader);
+drop1.addEventListener("click", () => toggleDropdown(drop1, dropContent, dropLi));
+
+drop2.addEventListener("click", () => toggleDropdown(drop2, dropContent2, dropLi2));
+drop3.addEventListener("click", () => toggleDropdown(drop3, dropContent3, dropLi3));
+drop4.addEventListener("click", () => toggleDropdown(drop4, dropContent4, dropLi4));
+drop5.addEventListener("click", () => toggleDropdown(drop5, dropContent5, dropLi5));
 
 
 

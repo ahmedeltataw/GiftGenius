@@ -11,7 +11,11 @@ export const HeaderData: LinkType[] = [
     {
         title: "تواصل معنا",
         path: "ContactUs.html"
-    }
+    },
+    {
+        title: " اقتراح الهدايا ",
+        path: "Chat.html"
+    },
 ]
 // card data
 import Img_1 from "../assets/images/products/pro.png"

@@ -72,27 +72,15 @@ header {
                 .nav-link {
 
 
-                    &::before,
-                    &::after {
+                    &::before {
                         content: '';
                         position: absolute;
                         background-color: $hover;
-                        width: 3px;
-
+                        width: 2px;
                         height: 0;
                         border-radius: 15px;
-
                         transition: $t-s;
-
                     }
-
-                    &::after {
-                        bottom: 0;
-                        left: -7px;
-
-
-                    }
-
                     &::before {
                         top: 0;
                         right: -7px;
@@ -103,8 +91,7 @@ header {
                     &:hover {
                         color: $hover;
 
-                        &::before,
-                        &::after {
+                        &::before {
 
                             height: 100%;
 

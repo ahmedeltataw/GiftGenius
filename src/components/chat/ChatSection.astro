@@ -1,0 +1,19 @@
+---
+import ChatModel from "./ChatModel.astro";
+import SideBarChat from "./SideBarChat.astro";
+---
+
+<section class="Chat">
+  <div class="container">
+    <div class="row gap-row-1 items-start">
+      <!-- sideBar -->
+      <div class="col-3-lg col-3-md col-12-sm">
+        <SideBarChat />
+      </div>
+      <!-- chat model -->
+      <div class="col-9-lg col-9-md col-12-sm">
+        <ChatModel />
+      </div>
+    </div>
+  </div>
+</section>

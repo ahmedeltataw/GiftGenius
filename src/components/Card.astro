@@ -19,8 +19,8 @@ import Button from "./ui/Button.astro";
 ---
 
 <a href={path}>
-  <div class="card round-8 d-flex">
-    <div class="top mx-auto">
+  <div class="card round-8 relative">
+    <div class="top mx-auto relative">
       <Image
         src={img}
         alt={`img for product`}
@@ -29,14 +29,14 @@ import Button from "./ui/Button.astro";
         class={`img-cover`}
       />
     </div>
-    <div class="body mr-1">
-      <div class="pb-5">
-        <h3 class="fw-700 pb-1 fs-20">{title}</h3>
-        <p class="price  fw-700 fs-28">
-          {price}
+    <div class="body mr-1 relative">
+      <div class="pb-5 d-flex items-center justify-between">
+        <h3 class="fw-700 pb-1 fs-24">{title}</h3>
+        <p class="price fw-700 fs-28">
+          {price} <span class="fw-500 fs-18">ر.س</span>
         </p>
       </div>
-      <p class="des fs-16 pb-6 fw-500 line-normal">{des}</p>
+      <p class="des fs-18 pb-6 fw-500 line-normal">{des}</p>
 
       <Button
         type="button"

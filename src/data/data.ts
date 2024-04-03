@@ -23,56 +23,56 @@ import type { CardType } from "../types/types";
 export const CardData: CardType[] = [
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "
     },
     {
         title: " ساعة سمارت ",
-        price: "150 ر.س",
+        price: "150",
         place: "الاقصر",
         img: Img_1,
         des: " ساعة سمارت انتاج شركة Ryn "

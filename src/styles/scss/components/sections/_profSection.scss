@@ -1,0 +1,55 @@
+@use "../../helpers/color" as *;
+@use "../../helpers/extend" as *;
+@use "../../helpers/mixin" as *;
+.profile{
+    @extend %section;
+    form {
+        background-color: #fff;
+        width: 550px;
+        max-width: 100%;
+        min-height: 478px;
+        aspect-ratio: 16 / 9;
+        border-radius: 30px;
+        box-shadow: -20px 20px 2rem #0c010424;
+        transition: 700ms ease-in-out;
+        margin-top: 5vh;
+       
+        padding: 30px 35px 10px;
+  
+
+        input {
+            @extend %inputAuth;
+            max-width: 100%;
+
+            &:focus {
+                border-color: $hover;
+            }
+
+
+
+            &:focus+label,
+            &:valid+label {
+                color: $hover;
+                transform: scale(.9) translateY(-35px);
+                background-color: #fff;
+                opacity: 1;
+            }
+        }
+
+        label {
+            transform: translateY(-50%);
+            transition: $t-s;
+            pointer-events: none;
+            opacity: .8;
+        }
+
+     
+    }
+}
+.btn-popup{
+    color: #fff;
+    background-color: $hover;
+    &::before{
+        background-color: $hover-2;
+    }
+}

@@ -1,0 +1,33 @@
+---
+import Button from "@components/ui/Button.astro";
+import FormGroup from "@components/ui/FormGroup.astro";
+---
+
+<section class="profile">
+  <div class="container">
+    <form action="#!" class="mx-auto">
+      <h3 class="fs-30 fw-700 text-center mb-10">تعديل البيانات</h3>
+      <FormGroup type="text" name="userName" title="الاسم بالكامل" />
+      <FormGroup type="email" name="userEmail" title=" البريد الالكتروني" />
+      <FormGroup type="number" name="usernumber" title=" رقم الهاتف" />
+      <FormGroup type="text" name="userAdders" title="  العنوان" />
+      <FormGroup type="password" name="userPassword" title="  كلمة المرور" />
+      <div class="d-flex">
+        <Button
+          type="submit"
+          aria="sign in"
+          ClassName="mt-5 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto mt-14"
+        >
+          حفظ
+        </Button>
+        <Button
+          type="submit"
+          aria="sign in"
+          ClassName="mt-5 btn-popup px-10 py-5 round-6 fs-18 d-flex items-center justify-center mx-auto mt-14"
+        >
+          تسجيل الخروج
+        </Button>
+      </div>
+    </form>
+  </div>
+</section>

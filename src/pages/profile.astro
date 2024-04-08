@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/scss/pages/ContactUs.scss";
+import BreadCrumb from "../components/ui/breadcrumb.astro";
+import "@styles/scss/pages/profile.scss"
+import Profsection from "@components/profile/profsection.astro";
+---
+
+<Layout title="Gift Genius | الملف الشخصي ">
+  <main>
+    <BreadCrumb
+      defPage=" الصفحة الرئيسية"
+      linkPage=" الملف الشخصي"
+      isCrumb={false}
+      path="/"
+    />
+    <Profsection />
+  </main>
+</Layout>
